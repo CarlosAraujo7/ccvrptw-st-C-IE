@@ -38,6 +38,8 @@ ARQUIVOS = [
     'pesquisa/equivalencia.py', 'pesquisa/COMO_REGERAR_AS_TABELAS.md',
     'pesquisa/pyvrp_nominal.py', 'pesquisa/analisar_pyvrp_nominal.py', 'pesquisa/frota_dedicada.py',
     'pesquisa/analisar_frota_dedicada.py', 'pesquisa/analisar_simc100_completo.py', 'pesquisa/orquestrar_bloco_b.sh',
+    'pesquisa/testar_regeneracao_tabelas.py',     # teste de regeneração das tabelas (A7, Entrada 137)
+    'pesquisa/gerar_tabelas_c.py',                # saída heterogênea de tempos renomeada (Entrada 137)
     # lançadores alterados desde a última sincronização
     'pesquisa/caso_sp/rodar_caso_sp_v2.ps1', 'pesquisa/rodar_ciclo_20261015.ps1', 'pesquisa/rodar_execucao_c_v2.ps1',
     'pesquisa/rodar_medicoes_maquina_livre.ps1', 'pesquisa/rodar_pos_execucao.ps1',
@@ -51,7 +53,7 @@ PASTAS = ['instances/caso_sp_td', 'instances/caso_sp_media_operacao', 'instances
           # ciclo C1 (resumos pequenos; os resultados brutos por execução vão para um arquivo permanente, não para o git)
           'pesquisa/resultados_custo_completo', 'pesquisa/resultados_servico_alternativo', 'pesquisa/resultados_parte_b_estendida',
           'pesquisa/resultados_parte_b_estendida_poshoc', 'pesquisa/resultados_pyvrp_nominal', 'pesquisa/resultados_c_b3',
-          'pesquisa/resultados_robustez']   # o LaTeX gerado fica fora do repositório (.gitignore)
+          'pesquisa/resultados_robustez', 'pesquisa/resultados_teste_regeneracao']   # o LaTeX gerado fica fora do repositório (.gitignore)
 IGNORAR = ('.bak', '__pycache__', 'log_', '_backup_')
 
 

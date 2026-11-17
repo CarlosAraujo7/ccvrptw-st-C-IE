@@ -331,7 +331,7 @@ linhas = []
 for a in ['C-DET', 'C-DETC', 'C-BUF90C', 'C-BUF95C', 'C-SIMC', 'C-MOEADC']:
     linhas.append(NOME[a] + ' & ' + ' & '.join(f"{np.mean(t[(a, n)]):.0f}" for n in (25, 50, 100)) + r' \\')
     NUM[f'tempo_{a}'] = [float(np.mean(t[(a, n)])) for n in (25, 50, 100)]
-escrever('tab_tempo.tex', r"""\begin{table}[htbp]
+escrever('tab_tempo_execucao_principal.tex', r"""\begin{table}[htbp]
 \centering
 \caption{Mean wall-clock time per run (s; 200 generations, 10 runs in parallel on a 12-core desktop). \mCAL{} requires one run per rung of the ladder (four).}
 \label{tab:time}

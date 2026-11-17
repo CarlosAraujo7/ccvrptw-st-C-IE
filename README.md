@@ -1,9 +1,7 @@
 # CCVRPTW-ST — Cold-chain vehicle routing under temperature and travel-time uncertainty
 
-Code, instances, public input data and result summaries for the paper
-
-> **Cold-chain vehicle routing under temperature and travel-time uncertainty: plan the quality, protect the punctuality**
-> (submitted to the *European Journal of Operational Research*).
+Code, instances, public input data and result summaries for a study of cold-chain vehicle routing under temperature and
+travel-time uncertainty (under peer review).
 
 The paper studies a three-objective cold-chain vehicle routing problem with time windows (cost, value-weighted
 product-quality loss under Arrhenius kinetics, CO2 emissions). It uses a route-dependent thermal model, departure
@@ -172,6 +170,24 @@ files keep the first analysis with seeds 0-2). The design and the hypotheses wer
 `refinamento_simulacao.py`, whose default path is unchanged) and writes `refinamento_<start>_lcb.json` next to the
 point-rule results. `python pesquisa/regra_lcb.py` compares both rules (Table S18 of the supplementary material;
 `pesquisa/resultados_regra_lcb/`), and `python pesquisa/figura_sintese.py` draws Figure 1 of the paper.
+
+## Additional analyses of the revision (Tables S22-S30 of the supplementary material)
+
+Each table is produced by a script from stored results. `pesquisa/COMO_REGERAR_AS_TABELAS.md` maps every table to its script,
+and `python pesquisa/testar_regeneracao_tabelas.py` regenerates the tables and compares their numbers with those of the
+submitted package (`--pacote` gives the folder with its `tables/`; `--tudo` includes the slow generators).
+
+- `pesquisa/equivalencia.py`: equivalence tests (Table S22).
+- `pesquisa/custo_completo.py`: route time and refrigeration energy priced on the stored solutions (Table S23).
+- `pesquisa/servico_alternativo.py`: per-customer service measures (Table S24).
+- `pesquisa/parte_b_estendida.py` and `pesquisa/tabela_parte_b_estendida.py`: other kinetics, noise structures and quality thresholds (Table S25).
+- `pesquisa/analisar_pyvrp_nominal.py`: PyVRP without buffers (Tables S26-S28). The nominal plan is the first iteration of PyVRP-SIM
+  (`pesquisa/resultados_pyvrp_sim/`); `pesquisa/pyvrp_nominal.py` re-solves a sample of it to check the replication
+  (`pesquisa/resultados_pyvrp_nominal/`).
+- `python src/experiment_runner.py --algorithms C-SIMC100 --sizes 25 100 --uncertainty MEDIUM HIGH --seeds 5 --resume --results-dir results_c_extra`
+  and `pesquisa/analisar_simc100_completo.py`: simheuristic with 100 search scenarios (Table S29).
+- `pesquisa/frota_dedicada.py` and `pesquisa/analisar_frota_dedicada.py`: vehicles dedicated to product classes against
+  multi-compartment vehicles (Table S30; the runs go to `results_c_b3/`). `pesquisa/orquestrar_bloco_b.sh` chains the last two batches.
 
 ## Raw results
 

@@ -4,7 +4,8 @@ Atualizado em 16/11/2026 (diário, Entradas 121-124). Cada tabela do artigo e do
 
 | Tabela (arquivo) | Script | Entrada principal |
 |---|---|---|
-| `tab_conformidade`, `tab_custo`, `tab_hv`, `tab_preco`, `tab_b2`, `tab_clima`, `tab_exato`, `tab_parteb`, `tab_tempo` | `pesquisa/gerar_tabelas_c.py` | `pesquisa/resultados_c/por_execucao.csv`, `results_c/*/*_oosC.json`, `results_c_b2` |
+| `tab_conformidade`, `tab_custo`, `tab_hv`, `tab_preco`, `tab_b2`, `tab_clima`, `tab_exato`, `tab_parteb` | `pesquisa/gerar_tabelas_c.py` | `pesquisa/resultados_c/por_execucao.csv`, `results_c/*/*_oosC.json`, `results_c_b2` |
+| `tab_tempo` | `pesquisa/tempo_microbenchmark.py --tabela` | `results_c_tempo/` (microbenchmark controlado em máquina livre; NÃO usar os `elapsed_s` de `results_c`, medidos em sessões com cargas diferentes: o teste de regeneração apontou a divergência e `gerar_tabelas_c.py` agora grava essa versão como `tab_tempo_execucao_principal.tex`) |
 | `tab_equivalencia` | `pesquisa/equivalencia.py` | `pesquisa/resultados_robustez/` |
 | `tab_robustez` | `pesquisa/gerar_tab_robustez.py` | `pesquisa/resultados_robustez/decisor.json` |
 | `tab_refino` | `pesquisa/analisar_refinamento.py` | `pesquisa/resultados_refinamento/refinamento_*.json` |
@@ -41,4 +42,4 @@ Bloco B (diário Entradas 128-130; saem para o pacote C&IE `tables/` depois de c
 - **Dentro de um mesmo ambiente**, a mesma semente reproduz o mesmo resultado (`pesquisa/test_determinismo_det.py`, 4/4 PASS). **Entre ambientes** (versão de numpy/BLAS, hardware, sistema operacional) as frentes de Pareto podem diferir (Entradas 18, 20 e 21 do diário); por isso o repositório e o Zenodo guardam os **resultados brutos**, e as tabelas se regeneram deles sem reotimizar.
 - Laços limitados por tempo de parede (protocolo oficial de comparação) tornam a execução do zero sensível à carga da máquina; replay bit a bit só com o modo de iterações fixas (Lei Geral, II.9).
 - Dados de terceiros: OpenStreetMap e DT-CARGO (ODbL), Atenas (CC BY 4.0), TomTom Traffic Index e CNPJ da Receita Federal (termos próprios). Ver `DATA_LICENSE.md` do repositório.
-- **Ainda falta** (A7): um teste automático que regenere as tabelas de um diretório temporário e as compare com as do pacote (Lei Geral, I.4); hoje a verificação foi feita caso a caso (S20, S22, S23).
+- **Teste de regeneração (A7; Entrada 137):** `python pesquisa/testar_regeneracao_tabelas.py` roda os geradores, lê as tabelas geradas e compara os NÚMEROS do corpo de cada uma com os da tabela do pacote de submissão (`--pacote` indica a pasta `tables/`; legendas e numeração não entram, porque foram ajustadas à mão para a C&IE). Por padrão roda só os geradores rápidos; `--tudo` inclui os lentos (`gerar_tabelas_c.py`, `regra_lcb.py`, `validar_teoria_buffer.py`, as variantes do caso SP e `comparar_td.py`) e `--so tab_x` roda uma tabela. O diretório `pesquisa/latex_ejor_c/tables/` é copiado antes e restaurado depois. Relatório em `pesquisa/resultados_teste_regeneracao/relatorio_teste_regeneracao.txt`. Sem gerador testado: `tab_params` e `tab_sp_dados` (tabelas de parâmetros e de dados, sem script gerador).
