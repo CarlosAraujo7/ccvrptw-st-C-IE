@@ -1,0 +1,25 @@
+\begin{table}[htbp]
+\centering
+\caption{Price of certifying the plan of the external solver: cost of the certified plan with buffers, relative to the nominal plan of the same cell (\%). \mCAL{}: cheapest certified rung of $q\in\{0.80,0.90,0.95\}$; \mBUF{0.95}: the fixed rung. Mean (median) over cells; Fails: only the cells whose nominal plan misses the certification (number of cells in the third column). Negative values are search noise, because the nominal plan comes from one solve and \mCAL{} from the best of three. The split by the result of the certification of the nominal plan is descriptive.}
+\label{tab:pyvrp-price}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}l l r r r r r@{}}
+\toprule
+ & & & \multicolumn{2}{c}{PyVRP, \mCAL{}} & \multicolumn{2}{c}{PyVRP, \mBUF{0.95}} \\
+\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Instances & Uncertainty & Fails & All cells & Fails & All cells & Fails \\
+\midrule
+benchmark & medium & 10 & +0.20 (0.00) & +0.83 (+0.83) & +0.62 (0.00) & +3.02 (+3.02) \\
+ & high & 44 & +0.60 (0.00) & +1.23 (+0.67) & +1.47 (+0.18) & +2.96 (+1.86) \\
+\midrule
+S\~ao Paulo & medium & 0 & -0.12 (-0.05) & -- & -0.07 (0.00) & -- \\
+ & high & 1 & -0.08 (-0.02) & -0.01 (-0.01) & -0.02 (+0.01) & +0.34 (+0.34) \\
+\midrule
+$n=200$ & medium & 0 & -0.10 (-0.10) & -- & +0.22 (+0.29) & -- \\
+ & high & 8 & -0.18 (+0.01) & +0.11 (+0.22) & +0.18 (+0.33) & +0.52 (+0.59) \\
+\midrule
+$n=400$ & medium & 0 & -0.15 (-0.12) & -- & -0.02 (-0.04) & -- \\
+ & high & 6 & -0.15 (-0.10) & -0.07 (-0.10) & +0.06 (+0.06) & +0.11 (+0.03) \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -11,7 +11,7 @@
 #   powershell -ExecutionPolicy Bypass -File .\pesquisa\rodar_pos_execucao.ps1
 
 $ErrorActionPreference = "Continue"
-$projeto = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+$projeto = "C:\Pesquisas\CCVRPTW-ST"
 $env:PYTHONIOENCODING = "utf-8"
 Set-Location $projeto
 $log = Join-Path $projeto ("pesquisa\log_pos_execucao_{0}.txt" -f (Get-Date -Format "yyyyMMdd_HHmmss"))

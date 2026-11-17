@@ -1,4 +1,4 @@
-﻿# Medicoes com a maquina livre (15/10/2026, diario Entrada 96; o pesquisador autorizou encerrar os
+# Medicoes com a maquina livre (15/10/2026, diario Entrada 96; o pesquisador autorizou encerrar os
 # processos de outros projetos).
 #  1. Tabela 8: microbenchmark de tempo (216 execucoes HIGH, 6 metodos, 10 processos, ordem sorteada)
 #  2. Referencia PyVRP do caso SP (8 instancias x 3 sementes, limite de tempo por resolucao)
@@ -7,7 +7,7 @@
 # Como rodar: powershell -ExecutionPolicy Bypass -File .\pesquisa\rodar_medicoes_maquina_livre.ps1
 
 $ErrorActionPreference = "Continue"
-$projeto = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+$projeto = "C:\Pesquisas\CCVRPTW-ST"
 $env:PYTHONIOENCODING = "utf-8"
 Set-Location $projeto
 $log = Join-Path $projeto ("pesquisa\log_medicoes_{0}.txt" -f (Get-Date -Format "yyyyMMdd_HHmmss"))

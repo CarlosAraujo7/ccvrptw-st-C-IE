@@ -1,0 +1,125 @@
+B1 — PyVRP sem buffer (plano nominal = iteração 0 do PyVRP-SIM); α = 0.90; certificação em 500 cenários
+
+==== benchmark: 180 células (instância x semente), sementes [0, 1, 2, 3, 4] ====
+A. Certificação do plano nominal (P_cert >= α em 500 cenários)
+  MEDIUM células  90 (viáveis  90)  certificado  88.9% (80)  P_cert média 0.976  mediana 1.000  mín 0.776 | estreita:  77.8% de 45 | larga: 100.0% de 45
+  HIGH   células  90 (viáveis  90)  certificado  51.1% (46)  P_cert média 0.880  mediana 0.978  mín 0.588 | estreita:  11.1% de 45 | larga:  91.1% de 45
+B. Preço da confiabilidade: custo do plano certificado do PyVRP contra o plano nominal da mesma célula (%)
+  MEDIUM | CAL, todas: n=90 média +0.20 mediana +0.00 | CAL, nominal passa: n=80 média +0.12 mediana +0.00 | CAL, nominal falha: n=10 média +0.83 mediana +0.83 | CAL+R, todas: n=90 média +0.16 mediana +0.00 | BUF0.95, todas: n=90 média +0.62 mediana +0.00 | BUF0.95, passa: n=80 média +0.32 mediana +0.00 | BUF0.95, falha: n=10 média +3.02 mediana +3.02
+      C. (post hoc) CAL com degrau nominal: contra CAL média -0.145 mediana +0.000; contra o plano nominal média +0.051 mediana +0.000 (n=90)
+         política "nominal primeiro" (para no plano nominal se ele passa; senão a escada completa): custo contra o CAL média -0.103 mediana +0.000; resoluções por célula 1.33 contra 3 do CAL
+  HIGH   | CAL, todas: n=90 média +0.60 mediana +0.00 | CAL, nominal passa: n=46 média -0.01 mediana +0.00 | CAL, nominal falha: n=44 média +1.23 mediana +0.67 | CAL+R, todas: n=90 média +0.46 mediana +0.00 | BUF0.95, todas: n=90 média +1.47 mediana +0.18 | BUF0.95, passa: n=46 média +0.04 mediana +0.00 | BUF0.95, falha: n=44 média +2.96 mediana +1.86
+      C. (post hoc) CAL com degrau nominal: contra CAL média +0.000 mediana +0.000; contra o plano nominal média +0.599 mediana +0.000 (n=90)
+         política "nominal primeiro" (para no plano nominal se ele passa; senão a escada completa): custo contra o CAL média +0.003 mediana +0.000; resoluções por célula 2.47 contra 3 do CAL
+   HL por instância do custo (%), plano certificado do PyVRP contra o nominal (Holm entre as 3 comparações):
+      MEDIUM PY-CAL      n=18  HL  +0.120 [ -0.001,  +0.403]  p=0.0926  p_Holm=0.185  (4 menores, 6 maiores)
+      MEDIUM PY-CAL+R    n=18  HL  +0.114 [ -0.001,  +0.402]  p=0.114  p_Holm=0.185  (4 menores, 6 maiores)
+      MEDIUM PY-BUF0.95  n=18  HL  +0.251 [ +0.003,  +1.157]  p=0.00444  p_Holm=0.0133  (0 menores, 10 maiores)
+      HIGH   PY-CAL      n=18  HL  +0.294 [ +0.000,  +0.833]  p=0.0229  p_Holm=0.0458  (4 menores, 8 maiores)
+      HIGH   PY-CAL+R    n=18  HL  +0.287 [ +0.000,  +0.828]  p=0.0229  p_Holm=0.0458  (4 menores, 8 maiores)
+      HIGH   PY-BUF0.95  n=18  HL  +0.480 [ +0.012,  +2.650]  p=0.00577  p_Holm=0.0173  (3 menores, 10 maiores)
+      todos  PY-CAL      n=36  HL  +0.247 [ +0.000,  +0.402]  p=0.0045  p_Holm=0.009  (8 menores, 14 maiores)
+      todos  PY-CAL+R    n=36  HL  +0.204 [ +0.000,  +0.402]  p=0.00498  p_Holm=0.009  (8 menores, 14 maiores)
+      todos  PY-BUF0.95  n=36  HL  +0.360 [ +0.101,  +1.287]  p=9.07e-05  p_Holm=0.000272  (3 menores, 20 maiores)
+  D. decomposição (todos; 36 instâncias, 180 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +1.35 [+0.65, +2.06]; sim -0.53 [-0.96, -0.10]; motor +1.17 [+0.64, +1.70]; escada +0.72 [+0.26, +1.18];
+  D. decomposição (MEDIUM; 18 instâncias, 90 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +0.84 [+0.12, +1.56]; sim -0.59 [-1.18, +0.00]; motor +0.97 [+0.34, +1.60]; escada +0.46 [+0.06, +0.86];
+  D. decomposição (HIGH; 18 instâncias, 90 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +1.87 [+0.64, +3.11]; sim -0.47 [-1.16, +0.21]; motor +1.37 [+0.47, +2.27]; escada +0.98 [+0.11, +1.84];
+  D'. HL por instância, PyVRP CAL+R / SIM+C                        n=36  HL  -0.679 [ -2.149,  -0.334]  p=5.27e-06  p_Holm=1.58e-05
+  D'. HL por instância, BUF0.95+C / SIM+C (mesmo motor)            n=36  HL  +0.105 [ -0.003,  +0.606]  p=0.0598  p_Holm=0.0598
+  D'. HL por instância, PyVRP BUF0.95 / BUF0.95+C (mesmo buffer)   n=36  HL  -0.726 [ -1.570,  -0.363]  p=3.11e-06  p_Holm=1.24e-05
+  D'. HL por instância, PyVRP CAL+R / PyVRP BUF0.95                n=36  HL  -0.231 [ -0.829,  -0.041]  p=5.96e-05  p_Holm=0.000119
+
+==== S\~ao Paulo: 80 células (instância x semente), sementes [0, 1, 2, 3, 4] ====
+A. Certificação do plano nominal (P_cert >= α em 500 cenários)
+  MEDIUM células  40 (viáveis  40)  certificado 100.0% (40)  P_cert média 1.000  mediana 1.000  mín 1.000
+  HIGH   células  40 (viáveis  40)  certificado  97.5% (39)  P_cert média 0.989  mediana 0.998  mín 0.842
+B. Preço da confiabilidade: custo do plano certificado do PyVRP contra o plano nominal da mesma célula (%)
+  MEDIUM | CAL, todas: n=40 média -0.12 mediana -0.05 | CAL, nominal passa: n=40 média -0.12 mediana -0.05 | CAL, nominal falha: n=0 média +nan mediana +nan | CAL+R, todas: n=40 média -0.13 mediana -0.05 | BUF0.95, todas: n=40 média -0.07 mediana +0.00 | BUF0.95, passa: n=40 média -0.07 mediana +0.00 | BUF0.95, falha: n=0 média +nan mediana +nan
+      C. (post hoc) CAL com degrau nominal: contra CAL média -0.004 mediana +0.000; contra o plano nominal média -0.128 mediana -0.047 (n=40)
+         política "nominal primeiro" (para no plano nominal se ele passa; senão a escada completa): custo contra o CAL média +0.124 mediana +0.047; resoluções por célula 1.00 contra 3 do CAL
+  HIGH   | CAL, todas: n=40 média -0.08 mediana -0.02 | CAL, nominal passa: n=39 média -0.09 mediana -0.03 | CAL, nominal falha: n=1 média -0.01 mediana -0.01 | CAL+R, todas: n=40 média -0.09 mediana -0.03 | BUF0.95, todas: n=40 média -0.02 mediana +0.01 | BUF0.95, passa: n=39 média -0.03 mediana +0.01 | BUF0.95, falha: n=1 média +0.34 mediana +0.34
+      C. (post hoc) CAL com degrau nominal: contra CAL média -0.007 mediana +0.000; contra o plano nominal média -0.091 mediana -0.022 (n=40)
+         política "nominal primeiro" (para no plano nominal se ele passa; senão a escada completa): custo contra o CAL média +0.084 mediana +0.018; resoluções por célula 1.07 contra 3 do CAL
+   HL por instância do custo (%), plano certificado do PyVRP contra o nominal (Holm entre as 3 comparações):
+      MEDIUM PY-CAL      n= 8  HL  -0.097 [ -0.301,  +0.000]  p=0.0469  p_Holm=0.0938  (6 menores, 1 maiores)
+      MEDIUM PY-CAL+R    n= 8  HL  -0.106 [ -0.301,  -0.009]  p=0.0156  p_Holm=0.0469  (7 menores, 0 maiores)
+      MEDIUM PY-BUF0.95  n= 8  HL  -0.043 [ -0.179,  +0.004]  p=0.109  p_Holm=0.109  (5 menores, 2 maiores)
+      HIGH   PY-CAL      n= 8  HL  -0.067 [ -0.213,  +0.011]  p=0.109  p_Holm=0.219  (5 menores, 2 maiores)
+      HIGH   PY-CAL+R    n= 8  HL  -0.072 [ -0.213,  -0.005]  p=0.0312  p_Holm=0.0938  (6 menores, 1 maiores)
+      HIGH   PY-BUF0.95  n= 8  HL  -0.023 [ -0.114,  +0.091]  p=0.469  p_Holm=0.469  (4 menores, 3 maiores)
+      todos  PY-CAL      n=16  HL  -0.073 [ -0.174,  -0.011]  p=0.00918  p_Holm=0.0184  (11 menores, 3 maiores)
+      todos  PY-CAL+R    n=16  HL  -0.081 [ -0.176,  -0.023]  p=0.00152  p_Holm=0.00457  (13 menores, 1 maiores)
+      todos  PY-BUF0.95  n=16  HL  -0.035 [ -0.090,  +0.005]  p=0.0843  p_Holm=0.0843  (9 menores, 5 maiores)
+  D. decomposição (todos; 16 instâncias, 80 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +2.08 [+1.01, +3.16]; sim +0.30 [+0.17, +0.43]; motor +1.71 [+0.72, +2.71]; escada +0.07 [+0.03, +0.11];
+  D. decomposição (MEDIUM; 8 instâncias, 40 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +2.10 [+0.35, +3.85]; sim +0.32 [+0.10, +0.53]; motor +1.72 [+0.09, +3.35]; escada +0.06 [+0.00, +0.13];
+  D. decomposição (HIGH; 8 instâncias, 40 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +2.06 [+0.32, +3.81]; sim +0.28 [+0.08, +0.48]; motor +1.71 [+0.11, +3.31]; escada +0.07 [+0.01, +0.13];
+  D'. HL por instância, PyVRP CAL+R / SIM+C                        n=16  HL  -1.704 [ -2.980,  -0.521]  p=3.05e-05  p_Holm=0.000122
+  D'. HL por instância, BUF0.95+C / SIM+C (mesmo motor)            n=16  HL  -0.339 [ -0.481,  -0.206]  p=6.1e-05  p_Holm=0.000122
+  D'. HL por instância, PyVRP BUF0.95 / BUF0.95+C (mesmo buffer)   n=16  HL  -1.284 [ -2.581,  -0.375]  p=3.05e-05  p_Holm=0.000122
+  D'. HL por instância, PyVRP CAL+R / PyVRP BUF0.95                n=16  HL  -0.057 [ -0.109,  -0.028]  p=0.000979  p_Holm=0.000979
+
+==== $n=200$: 36 células (instância x semente), sementes [0, 1, 2] ====
+A. Certificação do plano nominal (P_cert >= α em 500 cenários)
+  MEDIUM células  18 (viáveis  18)  certificado 100.0% (18)  P_cert média 0.993  mediana 1.000  mín 0.958 | estreita: 100.0% de 9 | larga: 100.0% de 9
+  HIGH   células  18 (viáveis  18)  certificado  55.6% (10)  P_cert média 0.862  mediana 0.950  mín 0.546 | estreita:  11.1% de 9 | larga: 100.0% de 9
+B. Preço da confiabilidade: custo do plano certificado do PyVRP contra o plano nominal da mesma célula (%)
+  MEDIUM | CAL, todas: n=18 média -0.10 mediana -0.10 | CAL, nominal passa: n=18 média -0.10 mediana -0.10 | CAL, nominal falha: n=0 média +nan mediana +nan | CAL+R, todas: n=18 média -0.11 mediana -0.10 | BUF0.95, todas: n=18 média +0.22 mediana +0.29 | BUF0.95, passa: n=18 média +0.22 mediana +0.29 | BUF0.95, falha: n=0 média +nan mediana +nan
+      C. (post hoc) CAL com degrau nominal: contra CAL média -0.061 mediana +0.000; contra o plano nominal média -0.161 mediana -0.097 (n=18)
+         política "nominal primeiro" (para no plano nominal se ele passa; senão a escada completa): custo contra o CAL média +0.100 mediana +0.097; resoluções por célula 1.00 contra 3 do CAL
+  HIGH   | CAL, todas: n=18 média -0.18 mediana +0.01 | CAL, nominal passa: n=10 média -0.41 mediana -0.05 | CAL, nominal falha: n=8 média +0.11 mediana +0.22 | CAL+R, todas: n=18 média -0.18 mediana +0.01 | BUF0.95, todas: n=18 média +0.18 mediana +0.33 | BUF0.95, passa: n=10 média -0.09 mediana -0.05 | BUF0.95, falha: n=8 média +0.52 mediana +0.59
+      C. (post hoc) CAL com degrau nominal: contra CAL média -0.010 mediana +0.000; contra o plano nominal média -0.189 mediana -0.009 (n=18)
+         política "nominal primeiro" (para no plano nominal se ele passa; senão a escada completa): custo contra o CAL média +0.230 mediana +0.000; resoluções por célula 2.33 contra 3 do CAL
+   HL por instância do custo (%), plano certificado do PyVRP contra o nominal (Holm entre as 3 comparações):
+      MEDIUM PY-CAL      n= 6  HL  -0.125 [ -0.244,  +0.165]  p=0.219  p_Holm=0.438  (5 menores, 1 maiores)
+      MEDIUM PY-CAL+R    n= 6  HL  -0.127 [ -0.321,  +0.165]  p=0.219  p_Holm=0.438  (5 menores, 1 maiores)
+      MEDIUM PY-BUF0.95  n= 6  HL  +0.230 [ -0.114,  +0.534]  p=0.0938  p_Holm=0.281  (1 menores, 5 maiores)
+      HIGH   PY-CAL      n= 6  HL  -0.093 [ -1.011,  +0.345]  p=0.688  p_Holm=1  (3 menores, 3 maiores)
+      HIGH   PY-CAL+R    n= 6  HL  -0.094 [ -1.012,  +0.345]  p=0.688  p_Holm=1  (3 menores, 3 maiores)
+      HIGH   PY-BUF0.95  n= 6  HL  +0.202 [ -0.542,  +0.745]  p=0.438  p_Holm=1  (2 menores, 4 maiores)
+      todos  PY-CAL      n=12  HL  -0.093 [ -0.386,  +0.074]  p=0.233  p_Holm=0.467  (8 menores, 4 maiores)
+      todos  PY-CAL+R    n=12  HL  -0.096 [ -0.388,  +0.070]  p=0.233  p_Holm=0.467  (8 menores, 4 maiores)
+      todos  PY-BUF0.95  n=12  HL  +0.222 [ -0.052,  +0.438]  p=0.0923  p_Holm=0.277  (3 menores, 9 maiores)
+  D. decomposição (todos; 12 instâncias, 118 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +5.87 [+3.63, +8.10]; sim +1.17 [+0.09, +2.26]; motor +4.40 [+3.25, +5.55]; escada +0.29 [+0.21, +0.38];
+  D. decomposição (MEDIUM; 6 instâncias, 59 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +4.87 [+2.45, +7.30]; sim +0.58 [-0.16, +1.31]; motor +4.01 [+2.36, +5.65]; escada +0.29 [+0.13, +0.45];
+  D. decomposição (HIGH; 6 instâncias, 59 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +6.86 [+2.22, +11.50]; sim +1.77 [-0.60, +4.14]; motor +4.79 [+2.59, +6.99]; escada +0.30 [+0.16, +0.44];
+  D'. HL por instância, PyVRP CAL+R / SIM+C                        n=12  HL  -5.675 [ -8.077,  -2.924]  p=0.000488  p_Holm=0.00195
+  D'. HL por instância, BUF0.95+C / SIM+C (mesmo motor)            n=12  HL  -0.915 [ -2.296,  -0.041]  p=0.0425  p_Holm=0.0425
+  D'. HL por instância, PyVRP BUF0.95 / BUF0.95+C (mesmo buffer)   n=12  HL  -4.218 [ -5.490,  -2.844]  p=0.000488  p_Holm=0.00195
+  D'. HL por instância, PyVRP CAL+R / PyVRP BUF0.95                n=12  HL  -0.351 [ -0.473,  -0.226]  p=0.000488  p_Holm=0.00195
+
+==== $n=400$: 36 células (instância x semente), sementes [0, 1, 2] ====
+A. Certificação do plano nominal (P_cert >= α em 500 cenários)
+  MEDIUM células  18 (viáveis  18)  certificado 100.0% (18)  P_cert média 0.994  mediana 1.000  mín 0.946 | estreita: 100.0% de 9 | larga: 100.0% de 9
+  HIGH   células  18 (viáveis  18)  certificado  66.7% (12)  P_cert média 0.934  mediana 0.961  mín 0.774 | estreita:  44.4% de 9 | larga:  88.9% de 9
+B. Preço da confiabilidade: custo do plano certificado do PyVRP contra o plano nominal da mesma célula (%)
+  MEDIUM | CAL, todas: n=18 média -0.15 mediana -0.12 | CAL, nominal passa: n=18 média -0.15 mediana -0.12 | CAL, nominal falha: n=0 média +nan mediana +nan | CAL+R, todas: n=18 média -0.15 mediana -0.12 | BUF0.95, todas: n=18 média -0.02 mediana -0.04 | BUF0.95, passa: n=18 média -0.02 mediana -0.04 | BUF0.95, falha: n=0 média +nan mediana +nan
+      C. (post hoc) CAL com degrau nominal: contra CAL média -0.021 mediana +0.000; contra o plano nominal média -0.173 mediana -0.118 (n=18)
+         política "nominal primeiro" (para no plano nominal se ele passa; senão a escada completa): custo contra o CAL média +0.152 mediana +0.118; resoluções por célula 1.00 contra 3 do CAL
+  HIGH   | CAL, todas: n=18 média -0.15 mediana -0.10 | CAL, nominal passa: n=12 média -0.19 mediana -0.10 | CAL, nominal falha: n=6 média -0.07 mediana -0.10 | CAL+R, todas: n=18 média -0.15 mediana -0.10 | BUF0.95, todas: n=18 média +0.06 mediana +0.06 | BUF0.95, passa: n=12 média +0.04 mediana +0.06 | BUF0.95, falha: n=6 média +0.11 mediana +0.03
+      C. (post hoc) CAL com degrau nominal: contra CAL média -0.007 mediana +0.000; contra o plano nominal média -0.157 mediana -0.099 (n=18)
+         política "nominal primeiro" (para no plano nominal se ele passa; senão a escada completa): custo contra o CAL média +0.126 mediana +0.029; resoluções por célula 2.00 contra 3 do CAL
+   HL por instância do custo (%), plano certificado do PyVRP contra o nominal (Holm entre as 3 comparações):
+      MEDIUM PY-CAL      n= 6  HL  -0.150 [ -0.322,  +0.043]  p=0.0625  p_Holm=0.188  (5 menores, 1 maiores)
+      MEDIUM PY-CAL+R    n= 6  HL  -0.150 [ -0.324,  +0.043]  p=0.0625  p_Holm=0.188  (5 menores, 1 maiores)
+      MEDIUM PY-BUF0.95  n= 6  HL  -0.018 [ -0.192,  +0.157]  p=0.844  p_Holm=0.844  (4 menores, 2 maiores)
+      HIGH   PY-CAL      n= 6  HL  -0.133 [ -0.393,  +0.046]  p=0.0625  p_Holm=0.188  (5 menores, 1 maiores)
+      HIGH   PY-CAL+R    n= 6  HL  -0.133 [ -0.393,  +0.046]  p=0.0625  p_Holm=0.188  (5 menores, 1 maiores)
+      HIGH   PY-BUF0.95  n= 6  HL  +0.058 [ -0.175,  +0.328]  p=0.688  p_Holm=0.688  (3 menores, 3 maiores)
+      todos  PY-CAL      n=12  HL  -0.142 [ -0.239,  -0.055]  p=0.00244  p_Holm=0.00732  (10 menores, 2 maiores)
+      todos  PY-CAL+R    n=12  HL  -0.142 [ -0.240,  -0.055]  p=0.00244  p_Holm=0.00732  (10 menores, 2 maiores)
+      todos  PY-BUF0.95  n=12  HL  +0.008 [ -0.096,  +0.130]  p=0.85  p_Holm=0.85  (7 menores, 5 maiores)
+  D. decomposição (todos; 12 instâncias, 115 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +10.19 [+5.29, +15.09]; sim +2.68 [+0.57, +4.80]; motor +7.34 [+3.90, +10.79]; escada +0.17 [+0.10, +0.24];
+  D. decomposição (MEDIUM; 6 instâncias, 59 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +8.01 [+2.88, +13.14]; sim +1.97 [-0.52, +4.46]; motor +5.87 [+3.30, +8.45]; escada +0.17 [+0.05, +0.29];
+  D. decomposição (HIGH; 6 instâncias, 56 células; 100·média do log da razão de custos [IC 95% sobre as instâncias]): total +12.37 [+2.11, +22.63]; sim +3.39 [-1.00, +7.79]; motor +8.81 [+1.14, +16.48]; escada +0.16 [+0.04, +0.28];
+  D'. HL por instância, PyVRP CAL+R / SIM+C                        n=12  HL  -8.769 [-13.682,  -3.635]  p=0.000488  p_Holm=0.00195
+  D'. HL por instância, BUF0.95+C / SIM+C (mesmo motor)            n=12  HL  -2.201 [ -4.451,  +0.004]  p=0.0522  p_Holm=0.0522
+  D'. HL por instância, PyVRP BUF0.95 / BUF0.95+C (mesmo buffer)   n=12  HL  -5.722 [ -9.773,  -3.516]  p=0.000488  p_Holm=0.00195
+  D'. HL por instância, PyVRP CAL+R / PyVRP BUF0.95                n=12  HL  -0.148 [ -0.267,  -0.062]  p=0.000488  p_Holm=0.00195
+
+==== E. Replicação das resoluções novas (pipeline_nominal.jsonl) contra a iteração 0 do PyVRP-SIM, e carga ====
+  n =  25:  6 pares; custo idêntico em 6; |Δcusto| máx. 0.000%; |ΔP_cert| máx. 0.000; mesma decisão de certificação em 6 de 6
+  n =  50: 12 pares; custo idêntico em 11; |Δcusto| máx. 0.033%; |ΔP_cert| máx. 0.000; mesma decisão de certificação em 12 de 12
+  n = 100: 20 pares; custo idêntico em 14; |Δcusto| máx. 0.526%; |ΔP_cert| máx. 0.036; mesma decisão de certificação em 20 de 20
+  esforço e carga nas 38 resoluções novas: iterações do PyVRP mediana 61142; CPU do sistema mediana 100% (mín 82%)
+  viabilidade: 10 de 10 resoluções com o campo de tolerância são viáveis; estritas: 10 de 10; sem o campo: 28
+  controle q = 0,90 (semente 0): 4 reexecuções; custo idêntico em 4; |Δcusto| máx. 0.000%

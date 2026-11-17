@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\caption{Dedicated vehicles per product class versus multi-compartment vehicles, \mBUF{0.90}, $n=50$, 18 instances $\times$ 5 seeds. Reference: a single compartment carrying the same mixed load at the dominant set-point (Z=1, as in Table~S15). Dedicated fleets: each route carries one class of product and runs one zone at the set-point of the coldest category present (D2: frozen / chilled; D4: one class per category). Differences are medians over the pairs in which both variants have a plan certified out of sample, for the best value of each objective among compliant solutions (interquartile range of the cost difference in brackets). Compliance: \% of runs with a certified plan. Legal: mean share of delivered value above the legal limit of its own category.}
+\label{tab:b3}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}l r r r r r r@{}}
+\toprule
+Variant & Pairs & Compl. (\%) & $\Delta$ loss (p.p.) & $\Delta f_1$ (\%) & $\Delta f_3$ (\%) & Legal (\%) \\
+\midrule
+$Z=2$ zones & 90 & 100 & -2.67 & +0.13 [+0.0, +0.4] & +1.82 & 0.0 \\
+$Z=3$ zones & 90 & 100 & -2.41 & +0.53 [+0.2, +0.9] & +2.64 & 0.0 \\
+D2: frozen / chilled & 90 & 100 & -1.25 & +15.12 [+11.9, +17.8] & +18.03 & 0.0 \\
+D4: one per category & 90 & 100 & -1.04 & +49.23 [+43.0, +62.2] & +56.58 & 0.0 \\
+\midrule
+$Z=1$, mixed load & -- & 100 & -- & -- & -- & 15.8 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -32,13 +32,26 @@ ARQUIVOS = [
     'pesquisa/regra_lcb.py', 'pesquisa/rodar_regra_lcb.py', 'pesquisa/figura_sintese.py',
     # B3/B4 (18/10/2026, Entrada 118)
     'pesquisa/pyvrp_sim.py', 'pesquisa/rodar_ciclo_b3b4.ps1', 'pesquisa/rodar_ciclo_b3b4.cmd',
+    # ciclo C1 da revisão para a C&IE: bloco A (16/11/2026, Entradas 121-127) e bloco B (16-17/11/2026, Entradas 128-136)
+    'pesquisa/custo_completo.py', 'pesquisa/servico_alternativo.py', 'pesquisa/parte_b_estendida.py',
+    'pesquisa/tabela_parte_b_estendida.py', 'pesquisa/tempos_observados/tabela_observado_3conj.py',
+    'pesquisa/equivalencia.py', 'pesquisa/COMO_REGERAR_AS_TABELAS.md',
+    'pesquisa/pyvrp_nominal.py', 'pesquisa/analisar_pyvrp_nominal.py', 'pesquisa/frota_dedicada.py',
+    'pesquisa/analisar_frota_dedicada.py', 'pesquisa/analisar_simc100_completo.py', 'pesquisa/orquestrar_bloco_b.sh',
+    # lançadores alterados desde a última sincronização
+    'pesquisa/caso_sp/rodar_caso_sp_v2.ps1', 'pesquisa/rodar_ciclo_20261015.ps1', 'pesquisa/rodar_execucao_c_v2.ps1',
+    'pesquisa/rodar_medicoes_maquina_livre.ps1', 'pesquisa/rodar_pos_execucao.ps1',
 ]
 PASTAS = ['instances/caso_sp_td', 'instances/caso_sp_media_operacao', 'instances/caso_atenas',
           'pesquisa/resultados_caso_sp_td', 'pesquisa/resultados_caso_sp_media', 'pesquisa/resultados_caso_atenas',
           'pesquisa/resultados_teoria_buffer', 'pesquisa/resultados_degrau_nominal', 'pesquisa/resultados_acal',
           'pesquisa/resultados_calibracao_preditiva', 'pesquisa/tempos_observados/resultados', 'instances/escala',
           'pesquisa/resultados_escala', 'pesquisa/resultados_regra_lcb', 'pesquisa/resultados_refinamento',
-          'pesquisa/resultados_caso_sp/refinamento', 'pesquisa/resultados_pyvrp_sim']   # o LaTeX gerado fica fora do repositório (.gitignore)
+          'pesquisa/resultados_caso_sp/refinamento', 'pesquisa/resultados_pyvrp_sim',
+          # ciclo C1 (resumos pequenos; os resultados brutos por execução vão para um arquivo permanente, não para o git)
+          'pesquisa/resultados_custo_completo', 'pesquisa/resultados_servico_alternativo', 'pesquisa/resultados_parte_b_estendida',
+          'pesquisa/resultados_parte_b_estendida_poshoc', 'pesquisa/resultados_pyvrp_nominal', 'pesquisa/resultados_c_b3',
+          'pesquisa/resultados_robustez']   # o LaTeX gerado fica fora do repositório (.gitignore)
 IGNORAR = ('.bak', '__pycache__', 'log_', '_backup_')
 
 

@@ -1,4 +1,4 @@
-﻿# Ciclo de 15/10/2026 (analise de fraquezas; aprovado pelo pesquisador: "Pode seguir com o 2 e o 1,
+# Ciclo de 15/10/2026 (analise de fraquezas; aprovado pelo pesquisador: "Pode seguir com o 2 e o 1,
 # inclui o 3 tambem"). Diario Entrada 97.
 #  A2. Pipeline PyVRP + buffer + certificacao + refinamento (limitado por TEMPO: roda primeiro e sozinho)
 #  A1. Caso SP ampliado para 16 instancias (amostras SP3 e SP4: 560 execucoes novas)
@@ -9,7 +9,7 @@
 # Como rodar: powershell -ExecutionPolicy Bypass -File .\pesquisa\rodar_ciclo_20261015.ps1
 
 $ErrorActionPreference = "Continue"
-$projeto = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+$projeto = "C:\Pesquisas\CCVRPTW-ST"
 $env:PYTHONIOENCODING = "utf-8"
 Set-Location $projeto
 $log = Join-Path $projeto ("pesquisa\log_ciclo_{0}.txt" -f (Get-Date -Format "yyyyMMdd_HHmmss"))

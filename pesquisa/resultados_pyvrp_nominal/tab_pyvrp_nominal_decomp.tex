@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\caption{Where the cost gap between \mSIM{} and the external solver comes from. Hodges--Lehmann estimate of the paired difference per instance in the cost of the chosen plan (\%, mean over seeds; negative: the first plan is cheaper); $^*$: $p_{\mathrm{Holm}}<0.05$ (Wilcoxon signed-rank test, Holm correction over the four comparisons). Total: PyVRP, \mCAL{}+R against \mSIM{}. The other columns separate it into three steps: a 0.95 buffer in our solver against simulation inside its search; PyVRP against our solver at the same 0.95 buffer (a cost-only solver against a three-objective search); the ladder with refinement against the fixed buffer in PyVRP. The Hodges--Lehmann estimates of the steps do not add up exactly to the total.}
+\label{tab:pyvrp-decomp}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l r r r r r@{}}
+\toprule
+Instances & Inst. & Total & Buffer vs simulation & Solver & Ladder, +R \\
+\midrule
+benchmark & 36 & -0.68$^*$ & +0.11 & -0.73$^*$ & -0.23$^*$ \\
+S\~ao Paulo & 16 & -1.70$^*$ & -0.34$^*$ & -1.28$^*$ & -0.06$^*$ \\
+$n=200$ & 12 & -5.68$^*$ & -0.91$^*$ & -4.22$^*$ & -0.35$^*$ \\
+$n=400$ & 12 & -8.77$^*$ & -2.20 & -5.72$^*$ & -0.15$^*$ \\
+\bottomrule
+\end{tabular}
+\end{table}

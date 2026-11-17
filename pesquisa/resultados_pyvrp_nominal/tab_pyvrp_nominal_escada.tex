@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{Price of reliability and solver gap, measured against the nominal PyVRP plan (the same solver with no buffer, not necessarily certified). Hodges--Lehmann estimate of the paired difference per instance (mean over seeds) in the cost of the chosen plan, \%; $^*$: $p_{\mathrm{Holm}}<0.05$ (Wilcoxon signed-rank test, Holm correction over four measures). Complies: \% of the chosen plans meeting $\alpha=0.90$ out of sample. Rows PyVRP: the price of reliability under a fixed solver; rows \mBUF{0.95}, \mCAL{}+R and \mSIM{}: that price plus the gap of our solver.}
+\label{tab:pyvrp-ladder}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l r r r r @{}}
+\toprule
+ & \multicolumn{2}{c}{benchmark} & \multicolumn{2}{c}{S\~ao Paulo} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Plan & Cost (\%) & Compl. & Cost (\%) & Compl. \\
+\midrule
+PyVRP, BUF$_{0.95}$+C & +0.51$^*$ & 100.0 & +0.04 & 100.0 \\
+PyVRP, CAL & +0.29$^*$ & 100.0 & 0.00 & 100.0 \\
+PyVRP, CAL+R & +0.25$^*$ & 98.9 & 0.00 & 100.0 \\
+\mBUF{0.95} & +2.63$^*$ & 100.0 & +1.32$^*$ & 100.0 \\
+\mCAL{} & +2.07$^*$ & 95.8 & +1.09$^*$ & 93.8 \\
+\mCAL{}+R & +2.05$^*$ & 98.1 & +1.09$^*$ & 98.8 \\
+\mSIM{} & +2.44$^*$ & 93.3 & +1.72$^*$ & 93.8 \\
+\bottomrule
+\end{tabular}
+\end{table}

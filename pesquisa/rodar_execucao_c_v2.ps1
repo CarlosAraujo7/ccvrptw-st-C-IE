@@ -29,7 +29,7 @@
 #   powershell -ExecutionPolicy Bypass -File .\pesquisa\rodar_execucao_c_v2.ps1
 
 $ErrorActionPreference = "Continue"
-$projeto = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+$projeto = "C:\Pesquisas\CCVRPTW-ST"
 $env:PYTHONIOENCODING = "utf-8"
 $log = Join-Path $projeto ("pesquisa\log_execucao_c_v2_{0}.txt" -f (Get-Date -Format "yyyyMMdd_HHmmss"))
 Set-Location $projeto

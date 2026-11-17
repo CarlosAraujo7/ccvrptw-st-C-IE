@@ -5,7 +5,7 @@
 # Como rodar: powershell -ExecutionPolicy Bypass -File .\pesquisa\caso_sp\rodar_caso_sp_v2.ps1
 
 $ErrorActionPreference = "Continue"
-$projeto = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
+$projeto = "C:\Pesquisas\CCVRPTW-ST"
 $env:PYTHONIOENCODING = "utf-8"
 Set-Location $projeto
 $log = Join-Path $projeto ("pesquisa\caso_sp\log_caso_sp_v2_{0}.txt" -f (Get-Date -Format "yyyyMMdd_HHmmss"))

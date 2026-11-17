@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\centering
+\caption{PyVRP without buffers: the plan solved with nominal travel times (no buffer, departures at the start of the horizon) is certified on 500 scenarios. Cells: instance $\times$ seed (5 seeds; 3 with $n=200$ and 400). Certified: \% of the cells whose plan reaches $\hat P\ge\alpha=0.90$; $\bar P$: mean of $\hat P$. Narrow / wide: the same percentage for the families with narrow time windows and short horizon (C1, R1, RC1) and with wide windows and long horizon (C2, R2, RC2); this split was added after seeing the totals (exploratory). No cell is dropped.}
+\label{tab:pyvrp-nominal}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l l r r r r r@{}}
+\toprule
+Instances & Uncertainty & Cells & Certified (\%) & $\bar P$ & Narrow (\%) & Wide (\%) \\
+\midrule
+benchmark & medium & 90 & 88.9 & 0.976 & 77.8 & 100.0 \\
+ & high & 90 & 51.1 & 0.880 & 11.1 & 91.1 \\
+\midrule
+S\~ao Paulo & medium & 40 & 100.0 & 1.000 & -- & -- \\
+ & high & 40 & 97.5 & 0.989 & -- & -- \\
+\midrule
+$n=200$ & medium & 18 & 100.0 & 0.993 & 100.0 & 100.0 \\
+ & high & 18 & 55.6 & 0.862 & 11.1 & 100.0 \\
+\midrule
+$n=400$ & medium & 18 & 100.0 & 0.994 & 100.0 & 100.0 \\
+ & high & 18 & 66.7 & 0.934 & 44.4 & 88.9 \\
+\bottomrule
+\end{tabular}
+\end{table}
