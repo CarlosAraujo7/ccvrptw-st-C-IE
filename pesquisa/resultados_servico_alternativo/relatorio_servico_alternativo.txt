@@ -1,0 +1,10 @@
+benchmark C-DETC    planos  308  P_conj>=α  94.8%  mín π>=α  99.4%  média π 99.91%  pior cliente (mediana)  99.4%  atraso 0.003 min/cliente  atrasos esperados 0.03/plano
+benchmark C-BUF90C  planos  360  P_conj>=α  96.7%  mín π>=α 100.0%  média π 99.95%  pior cliente (mediana)  99.9%  atraso 0.002 min/cliente  atrasos esperados 0.02/plano
+benchmark C-BUF95C  planos  360  P_conj>=α 100.0%  mín π>=α 100.0%  média π 99.98%  pior cliente (mediana) 100.0%  atraso 0.001 min/cliente  atrasos esperados 0.01/plano
+benchmark CAL       planos  360  P_conj>=α  95.8%  mín π>=α 100.0%  média π 99.92%  pior cliente (mediana)  99.2%  atraso 0.003 min/cliente  atrasos esperados 0.03/plano
+benchmark C-SIMC    planos  360  P_conj>=α  93.3%  mín π>=α  98.9%  média π 99.90%  pior cliente (mediana)  98.2%  atraso 0.004 min/cliente  atrasos esperados 0.04/plano
+SP        C-DETC    planos  157  P_conj>=α  88.5%  mín π>=α  98.7%  média π 99.93%  pior cliente (mediana)  96.0%  atraso 0.001 min/cliente  atrasos esperados 0.05/plano
+SP        C-BUF90C  planos  160  P_conj>=α  95.6%  mín π>=α 100.0%  média π 99.95%  pior cliente (mediana)  99.0%  atraso 0.002 min/cliente  atrasos esperados 0.04/plano
+SP        C-BUF95C  planos  160  P_conj>=α 100.0%  mín π>=α 100.0%  média π 99.98%  pior cliente (mediana)  99.7%  atraso 0.001 min/cliente  atrasos esperados 0.01/plano
+SP        CAL       planos  160  P_conj>=α  93.8%  mín π>=α  99.4%  média π 99.94%  pior cliente (mediana)  98.4%  atraso 0.002 min/cliente  atrasos esperados 0.04/plano
+SP        C-SIMC    planos  160  P_conj>=α  93.8%  mín π>=α  99.4%  média π 99.93%  pior cliente (mediana)  96.7%  atraso 0.001 min/cliente  atrasos esperados 0.04/plano
