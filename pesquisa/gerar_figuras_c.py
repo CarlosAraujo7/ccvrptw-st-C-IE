@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
 Figuras do manuscrito do Caminho C (05/10/2026, diário Entrada 80), geradas dos
-resultados. Paleta categórica de referência (slots 1-3, validada para todos os
-pares e para daltonismo); o slot 3 fica abaixo de 3:1 de contraste, então os
-valores vão escritos nas barras e a tabela correspondente existe no texto.
+resultados. Desde 17/11/2026 (Entrada 153, a pedido dos autores) as cores são neutras: uma rampa
+de cinza-azulado de um só matiz, validada com validate_palette.js --ordinal (superfície branca),
+em vez do azul, laranja e verde saturados. Na Figura S1 os três níveis de incerteza são ordinais
+(claro a escuro); na S2 a identidade das duas séries vem também da forma do marcador e dos
+rótulos diretos. Os valores vão escritos nas barras e a tabela correspondente existe no texto.
 Saída: pesquisa/latex_ejor_c/figures/*.pdf
 """
 import csv, os
@@ -16,7 +18,7 @@ import matplotlib.pyplot as plt   # noqa: E402
 BASE = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 OUT = os.path.join(BASE, 'pesquisa', 'latex_ejor_c', 'figures')
 os.makedirs(OUT, exist_ok=True)
-S1, S2, S3 = '#2a78d6', '#eb6834', '#1baf7a'
+N1, N2, N3 = '#a3abb7', '#69727f', '#323944'      # rampa neutra, claro -> escuro (ordinal: 2,32:1 no extremo claro)
 INK, INK2, GRID, SURF = '#0b0b0b', '#52514e', '#e4e3df', '#ffffff'
 plt.rcParams.update({'font.family': 'serif', 'font.size': 8.5, 'axes.edgecolor': INK2, 'axes.labelcolor': INK,
                      'xtick.color': INK2, 'ytick.color': INK2, 'axes.linewidth': 0.6, 'figure.dpi': 200})
@@ -28,7 +30,7 @@ for r in R:
 # ── Figura 1: % de execuções com plano que cumpre α=0,90, por método e nível ──
 metodos = [('C-DET', 'DET'), ('C-DETC', 'DET+C'), ('C-BUF90', 'BUF$_{0.90}$'), ('C-BUF95C', 'BUF$_{0.95}$+C'),
            ('C-CAL-BEST', 'CAL'), ('C-SIMC', 'SIM+C')]
-niveis = [('LOW', 'Low', S1), ('MEDIUM', 'Medium', S2), ('HIGH', 'High', S3)]
+niveis = [('LOW', 'Low', N1), ('MEDIUM', 'Medium', N2), ('HIGH', 'High', N3)]
 fig, ax = plt.subplots(figsize=(6.6, 2.6))
 w = 0.26
 for j, (u, rot, cor) in enumerate(niveis):
@@ -64,16 +66,20 @@ def por_inst(a):
 
 sim = por_inst('C-SIMC')
 fig, ax = plt.subplots(figsize=(6.6, 2.5))
-for a, rot, cor, mk in (('C-DETC', 'DET+C (certify a deterministic plan)', S2, 'o'),
-                        ('C-BUF95C', 'BUF$_{0.95}$+C (buffered plan, certified)', S1, 's')):
+for a, rot, cor, mk in (('C-DETC', 'DET+C (certify a deterministic plan)', N2, 'o'),
+                        ('C-BUF95C', 'BUF$_{0.95}$+C (buffered plan, certified)', N3, 's')):
     x = por_inst(a)
     d = np.sort([100 * (x[k] / sim[k] - 1) for k in x if k in sim])[::-1]
     ax.plot(np.arange(1, len(d) + 1), d, marker=mk, markersize=3.6, linewidth=1.0, color=cor, label=rot, zorder=3,
             markeredgecolor=SURF, markeredgewidth=0.5)
-    off = (6, -2) if a == 'C-DETC' else (10, 9)
-    ax.annotate(f'max {d[0]:+.0f}%', (1, d[0]), xytext=off, textcoords='offset points', fontsize=6.5, color=INK2,
-                arrowprops=None if a == 'C-DETC' else dict(arrowstyle='-', color=INK2, linewidth=0.5))
-ax.axhline(0, color=INK2, linewidth=0.6, zorder=2)
+    if a == 'C-DETC':          # o rótulo fica à direita do ponto, onde a curva já desceu e não há nada
+        ax.annotate(f'max {d[0]:+.0f}%', (1, d[0]), xytext=(6, -2), textcoords='offset points', fontsize=6.5, color=INK2)
+    else:                      # abaixo do zero, longe das duas curvas (antes caía em cima da curva do DET+C)
+        ax.annotate(f'max {d[0]:+.0f}%', (1, d[0]), xytext=(5.5, -21), textcoords='data', fontsize=6.5, color=INK2, va='center',
+                    arrowprops=dict(arrowstyle='-', color=INK2, linewidth=0.5, shrinkA=1, shrinkB=2))
+ax.set_ylim(-34, 206)
+ax.set_yticks([0, 50, 100, 150, 200])
+ax.axhline(0, color='#c3c2b7', linewidth=0.7, zorder=2)
 ax.set_xlabel('Instances, sorted by cost difference')
 ax.set_ylabel('Cost vs SIM+C (%)')
 ax.grid(axis='y', color=GRID, linewidth=0.6, zorder=0)

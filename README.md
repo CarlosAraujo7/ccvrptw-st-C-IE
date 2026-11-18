@@ -23,7 +23,7 @@ It also proposes a simulation-based refinement of the chosen plan.
 | `src/` | Solver and experiment runner |
 | `src/ccvrp_c.py` | Problem model, Split decoder, granular local search with route elimination, chance constraint, certification, buffered planning times |
 | `src/nsga2_simheuristic.py` | NSGA-II and MOEA/D engines, instance loading, hypervolume |
-| `src/thermal_route.py` | Route-dependent thermal model (door openings, pull-downs, Arrhenius kinetics) and scenario sampling |
+| `src/thermal_route.py` | Route-dependent thermal model (door openings, pull-downs, Arrhenius kinetics), scenario sampling and an optional lower temperature limit for refrigerated products (off by default; environment variable `CCVRP_PISO_FRACAO`) |
 | `src/instance_generator.py` | Generator of the Solomon-style benchmark instances and thermal profiles |
 | `src/experiment_runner.py` | Runs methods × instances × seeds in parallel; method configurations in `ALGO_CONFIG` |
 | `src/ccvrp_c.py` (`buffer_adapt`) | Calibration of the buffer level within a single search (ACAL); off by default |
@@ -171,7 +171,7 @@ files keep the first analysis with seeds 0-2). The design and the hypotheses wer
 point-rule results. `python pesquisa/regra_lcb.py` compares both rules (Table S18 of the supplementary material;
 `pesquisa/resultados_regra_lcb/`), and `python pesquisa/figura_sintese.py` draws Figure 1 of the paper.
 
-## Additional analyses of the revision (Tables S22-S30 of the supplementary material)
+## Additional analyses of the revision (Tables S22-S34 of the supplementary material)
 
 Each table is produced by a script from stored results. `pesquisa/COMO_REGERAR_AS_TABELAS.md` maps every table to its script,
 and `python pesquisa/testar_regeneracao_tabelas.py` regenerates the tables and compares their numbers with those of the
@@ -186,8 +186,22 @@ submitted package (`--pacote` gives the folder with its `tables/`; `--tudo` incl
   (`pesquisa/resultados_pyvrp_nominal/`).
 - `python src/experiment_runner.py --algorithms C-SIMC100 --sizes 25 100 --uncertainty MEDIUM HIGH --seeds 5 --resume --results-dir results_c_extra`
   and `pesquisa/analisar_simc100_completo.py`: simheuristic with 100 search scenarios (Table S29).
-- `pesquisa/frota_dedicada.py` and `pesquisa/analisar_frota_dedicada.py`: vehicles dedicated to product classes against
-  multi-compartment vehicles (Table S30; the runs go to `results_c_b3/`). `pesquisa/orquestrar_bloco_b.sh` chains the last two batches.
+- `pesquisa/frota_dedicada.py` and `pesquisa/analisar_frota_dedicada.py`: vehicles dedicated to product classes, a single
+  compartment at the coldest set-point on board (variant Z1c) and two or three zones, against a single compartment at the
+  dominant set-point (Table S30, panel A; the runs go to `results_c_b3/`). `pesquisa/orquestrar_bloco_b.sh` chains the last two batches.
+- Lower temperature limit (panel B of Table S30). A refrigerated product whose temperature falls below its freezing point
+  before delivery loses its value (`src/thermal_route.py`, off by default). The limit was added after the first results of
+  panel A. The searches of Z1c and of two and three zones were repeated with it:
+  `CCVRP_PISO_FRACAO=1 python pesquisa/frota_dedicada.py --rodar --variantes Z1c Z2 Z3 --tamanhos 50 --workers 2 --res results_c_b3_lb`
+  (on Windows PowerShell, set `$env:CCVRP_PISO_FRACAO='1'` first). `pesquisa/analisar_piso_b3.py` analyzes both panels and the
+  evaluation-only sensitivity to the lost fraction and to the product time constant (`pesquisa/resultados_c_b3_lb/`);
+  `pesquisa/z1c_descritivo_frio.py` describes how the single cold compartment is used; `pesquisa/test_piso_temperatura.py`
+  tests the rule (switched off, it returns exactly what the previous module returned).
+- `pesquisa/tempos_observados/b4_cv_estimado.py`: coefficient of variation estimated from the taxi trips and used in planning (Table S31).
+- `pesquisa/margem_equivalencia.py` and `pesquisa/verificar_equivalencia_media.py`: the ±0.5% equivalence margin (Table S32).
+- `pesquisa/tabela_casos_sp_atenas.py`: paired comparisons and equal-budget comparisons for São Paulo and Athens (Tables S33 and S34).
+- `pesquisa/tabela_decisao.py`: derives Table 8 of the paper (when buffers suffice) from cells of the other tables.
+- `pesquisa/gerar_figuras_c.py` draws Figures S1 and S2 of the supplementary material and `pesquisa/gerar_resumo_grafico.py` the graphical abstract.
 
 ## Raw results
 
