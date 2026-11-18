@@ -1,0 +1,23 @@
+Plano do painel C da Tabela S30 (Entrada 154), copiado do cabeçalho de pesquisa/analisar_piso_b3.py ANTES de a análise ser rodada sobre os resultados
+(cópia gravada em 18/11/2026 14:03; a rodada das buscas começou às 13:59 de 18/11/2026; o piloto de uma instância, às 13:57).
+SHA-256 do texto abaixo: 5781e1f717861ceea9d26e2e1418dfcbc68ec27c06121858d87557f4e1c7c73d
+
+PAINEL C (Entrada 154, 18/11/2026) — PLANO FIXADO ANTES DAS EXECUÇÕES (este cabeçalho foi gravado antes de a primeira execução existir).
+Origem: a sensibilidade à constante de tempo do produto (--sens, só avaliação) mostrou que os planos do Z1c achados com tau_p = 10 h perdem muito mais
+que os do Z = 2 quando reavaliados com 4, 2 ou 1 h (perda mediana do melhor plano certificado, 2 h: 31% contra 13%). Isso NÃO é um resultado de busca: os
+planos não foram otimizados para o produto que responde depressa. O painel C repete as buscas com tau_p = 2 h, para saber se a ordem entre o Z1c e o
+Z = 2 inverte quando a busca também conhece o novo tau_p. A escolha de 2 h e a direção da hipótese vêm dessa sensibilidade (pós-hoc); a repetição é o teste.
+Desenho: as mesmas 18 instâncias (n = 50; famílias C1, C2, R1, R2, RC1 e RC2; incerteza LOW, MEDIUM e HIGH), sementes 0-4, C-BUF90C, mesmos
+parâmetros do painel B; variáveis de ambiente CCVRP_PISO_FRACAO = 1 (perde-se todo o valor ao congelar) e CCVRP_PISO_TAU_H = 2 (em vez de 10 h);
+variantes Z1c e Z = 2 (180 execuções, pasta results_c_b3_lb_tau2). O Z = 3 não é repetido (não acrescentou nada com 10 h e custa mais). Nenhum outro tau_p
+é buscado. D2, D4 e MIX não são repetidos: o painel verifica por avaliação, com tau_p = 2 h, que o valor congelado deles continua desprezível (<= 0,1% do
+valor refrigerado entregue); se não for, eles deixam de servir de referência no painel C e o texto diz isso.
+Hipótese principal (H_C): por instância (n = 18), o Z = 2 perde MENOS qualidade que o Z1c, isto é, a diferença Z1c - Z = 2 da melhor perda certificada
+(p.p., HL, Wilcoxon bilateral, Holm sobre as três medidas: perda, custo, CO2) é positiva. Regra de leitura, fixada agora:
+  R1. diferença de perda > 0 com p_Holm < 0,05: com o produto que responde em 2 h, duas zonas vencem o compartimento único mais frio; o valor do zoneamento
+      depende da resposta do produto (o compartimento único vence com 10 h, as zonas com 2 h) e o texto diz isso como condicional, não como medição;
+  R2. diferença de perda < 0 com p_Holm < 0,05: a vantagem do compartimento único mais frio sobrevive à busca refeita com o produto rápido;
+  R3. nenhum dos dois: sem diferença detectável com 2 h; a ordem depende de tau_p entre 10 h (Z1c melhor) e 2 h (empate).
+Custo e CO2 entram no relatório com HL, IC de 95% e p_Holm, mas não decidem a regra. Secundárias, descritivas: Z1c e Z = 2 contra MIX (mediana dos pares
+certificados, como no painel B); valor congelado (nominal, tau_p = 2 h); uso do compartimento do Z1c; perda mediana do melhor plano certificado.
+Limites já conhecidos: 50 clientes, um método de busca, pontos de congelamento e perda total assumidos, só um tau_p buscado.

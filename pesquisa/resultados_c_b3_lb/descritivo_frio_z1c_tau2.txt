@@ -1,0 +1,4 @@
+Z1c com limite inferior e tau_p = 2 h (C-BUF90C, n = 50): 90 arquivos, 90 execuções com solução viável
+média sobre as execuções da média sobre as soluções viáveis de cada frente final
+rotas com algum cliente de congelados (zona a -18 °C): média 42.0% (mín 25.8%, máx 60.4%)
+massa não congelada transportada nessas rotas: média 27.8% (mín 10.0%, máx 51.2%)

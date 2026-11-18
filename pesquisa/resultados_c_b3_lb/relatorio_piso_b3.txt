@@ -1,21 +1,27 @@
-B3 repetido com limite inferior de temperatura (pós-hoc, Entrada 153); C-BUF90C, n = 50, 18 instâncias, sementes 0-4; α = 0.90
+B3 repetido com limite inferior de temperatura (pós-hoc, Entrada 153; painel C, Entrada 154); C-BUF90C, n = 50, 18 instâncias, sementes 0-4; α = 0.90
 execuções por variante (painel A): MIX 90, Z=2 90, Z=3 90, D2 90, D4 90, Z1c 90
 execuções por variante (painel B, limite inferior): Z=2 90, Z=3 90, Z1c 90
+execuções por variante (painel C, limite inferior e tau_p = 2 h): Z=2 90, Z1c 90
 
-Painel A:
+Painel A (sem limite inferior):
   Z=2  pares  90  cumpre MIX 100.0% / Z=2 100.0%  Δ perda  -2.67 p.p.  Δ custo  +0.13% [+0.0, +0.4]  Δ CO2  +1.82%  legal 0.0%  congelado 33.5%
   Z=3  pares  90  cumpre MIX 100.0% / Z=3 100.0%  Δ perda  -2.41 p.p.  Δ custo  +0.53% [+0.2, +0.9]  Δ CO2  +2.64%  legal 0.0%  congelado 31.6%
   D2   pares  90  cumpre MIX 100.0% / D2 100.0%  Δ perda  -1.25 p.p.  Δ custo +15.12% [+11.9, +17.8]  Δ CO2 +18.03%  legal 0.0%  congelado 0.0%
   D4   pares  90  cumpre MIX 100.0% / D4 100.0%  Δ perda  -1.04 p.p.  Δ custo +49.23% [+43.0, +62.2]  Δ CO2 +56.58%  legal 0.0%  congelado 0.0%
   Z1c  pares  90  cumpre MIX 100.0% / Z1c 100.0%  Δ perda  -3.00 p.p.  Δ custo  +0.00% [-0.3, +0.0]  Δ CO2  +0.91%  legal 0.0%  congelado 26.0%
 
-Painel B:
+Painel B (com limite inferior, tau_p = 10 h, buscas refeitas):
   Z=2  pares  90  cumpre MIX 100.0% / Z=2 100.0%  Δ perda  -1.28 p.p.  Δ custo  +0.15% [+0.0, +0.4]  Δ CO2  +1.82%  legal 0.0%  congelado 6.1%
   Z=3  pares  90  cumpre MIX 100.0% / Z=3 100.0%  Δ perda  -1.21 p.p.  Δ custo  +0.64% [+0.4, +1.0]  Δ CO2  +2.87%  legal 0.0%  congelado 4.5%
   Z1c  pares  90  cumpre MIX 100.0% / Z1c 100.0%  Δ perda  -1.53 p.p.  Δ custo  +0.00% [-0.1, +0.1]  Δ CO2  +0.93%  legal 0.0%  congelado 6.2%
+
+Painel C (com limite inferior, tau_p = 2 h, buscas refeitas):
+  Z=2  pares  90  cumpre MIX 100.0% / Z=2 100.0%  Δ perda  -0.42 p.p.  Δ custo  +0.18% [+0.0, +0.4]  Δ CO2  +2.00%  legal 0.0%  congelado 19.4%
+  Z1c  pares  90  cumpre MIX 100.0% / Z1c 100.0%  Δ perda  -0.34 p.p.  Δ custo  +0.03% [+0.0, +0.4]  Δ CO2  +1.26%  legal 0.0%  congelado 22.5%
   MIX  cumpre 100.0%  legal 15.8%  congelado 0.0%
 
 Congelado nas variantes que não mudaram (deve ser 0): D2 0.00%, D4 0.00%
+Congelado com tau_p = 2 h nas variantes que NÃO foram repetidas (referências do painel C; critério fixado antes: <= 0,1% do valor): MIX 0.00%, D2 0.00%, D4 0.00%
 
 Comparação direta, por instância (HL [IC 95%]; Wilcoxon; Holm nas 3 medidas):
   Z1c contra Z=2 (painel A, sem limite inferior):
@@ -38,6 +44,27 @@ Comparação direta, por instância (HL [IC 95%]; Wilcoxon; Holm nas 3 medidas):
       Δ perda (p.p.)  n=18  HL  +1.440 [ +1.277,  +1.818]  p=7.63e-06  p_Holm=2.29e-05  (0 menores, 18 maiores)
       Δ custo (%)     n=18  HL  +0.081 [ +0.010,  +0.309]  p=0.0268  p_Holm=0.0537  (3 menores, 13 maiores)
       Δ CO2 (%)       n=18  HL  -0.003 [ -0.162,  +0.072]  p=0.899  p_Holm=0.899  (9 menores, 9 maiores)
+  Z1c contra Z=2 (painel C, com limite inferior e tau_p = 2 h, buscas refeitas): H_C:
+      Δ perda (p.p.)  n=18  HL  +0.292 [ -0.136,  +0.742]  p=0.13  p_Holm=0.259  (9 menores, 9 maiores)
+      Δ custo (%)     n=18  HL  -0.070 [ -0.166,  +0.086]  p=0.167  p_Holm=0.259  (12 menores, 6 maiores)
+      Δ CO2 (%)       n=18  HL  -0.712 [ -0.856,  -0.577]  p=7.63e-06  p_Holm=2.29e-05  (18 menores, 0 maiores)
+  REGRA DE LEITURA fixada no cabeçalho: R3 (diferença de perda Z1c - Z=2 = +0.292 p.p., p_Holm = 0.259)
+  Z=2 contra MIX (painel B; ADENDO pós-hoc, fora do plano):
+      Δ perda (p.p.)  n=18  HL  -1.225 [ -1.422,  -0.972]  p=1.53e-05  p_Holm=3.05e-05  (17 menores, 1 maiores)
+      Δ custo (%)     n=18  HL  +0.250 [ +0.076,  +0.365]  p=0.00896  p_Holm=0.00896  (3 menores, 15 maiores)
+      Δ CO2 (%)       n=18  HL  +1.948 [ +1.778,  +2.090]  p=7.63e-06  p_Holm=2.29e-05  (0 menores, 18 maiores)
+  Z1c contra MIX (painel B; ADENDO pós-hoc, fora do plano):
+      Δ perda (p.p.)  n=18  HL  -1.436 [ -1.673,  -1.122]  p=1.53e-05  p_Holm=3.05e-05  (17 menores, 1 maiores)
+      Δ custo (%)     n=18  HL  +0.001 [ -0.300,  +0.142]  p=0.983  p_Holm=0.983  (7 menores, 9 maiores)
+      Δ CO2 (%)       n=18  HL  +0.866 [ +0.642,  +1.026]  p=7.63e-06  p_Holm=2.29e-05  (0 menores, 18 maiores)
+  Z=2 contra MIX (painel C; ADENDO pós-hoc, fora do plano):
+      Δ perda (p.p.)  n=18  HL  -0.421 [ -0.534,  -0.311]  p=7.63e-06  p_Holm=2.29e-05  (18 menores, 0 maiores)
+      Δ custo (%)     n=18  HL  +0.190 [ +0.088,  +0.283]  p=0.00336  p_Holm=0.00336  (3 menores, 15 maiores)
+      Δ CO2 (%)       n=18  HL  +1.997 [ +1.775,  +2.184]  p=7.63e-06  p_Holm=2.29e-05  (0 menores, 18 maiores)
+  Z1c contra MIX (painel C; ADENDO pós-hoc, fora do plano):
+      Δ perda (p.p.)  n=18  HL  -0.161 [ -0.545,  +0.301]  p=0.523  p_Holm=0.523  (11 menores, 7 maiores)
+      Δ custo (%)     n=18  HL  +0.170 [ +0.047,  +0.331]  p=0.00896  p_Holm=0.0179  (3 menores, 15 maiores)
+      Δ CO2 (%)       n=18  HL  +1.247 [ +1.083,  +1.384]  p=7.63e-06  p_Holm=2.29e-05  (0 menores, 18 maiores)
 
 Sensibilidade (só avaliação das frentes gravadas, sem limite inferior na busca): Δ perda do Z1c contra o Z=2 (HL, p.p.), com fração perdida phi:
   phi = 0.00: HL -0.293 [-0.376, -0.205] em 18 instâncias (0 com Z1c pior, 18 com Z1c melhor)
@@ -51,3 +78,6 @@ Sensibilidade à constante de tempo do produto (planos refeitos com o limite, s�
   tau =  4.0 h: HL +11.530 [+8.616, +13.918] em 18 instâncias (18 com Z1c pior, 0 com Z1c melhor); perda mediana do melhor plano certificado: Z1c 23.14%, Z=2 10.04%
   tau =  2.0 h: HL +15.237 [+12.197, +18.649] em 18 instâncias (18 com Z1c pior, 0 com Z1c melhor); perda mediana do melhor plano certificado: Z1c 31.16%, Z=2 13.47%
   tau =  1.0 h: HL +16.225 [+13.150, +19.854] em 18 instâncias (18 com Z1c pior, 0 com Z1c melhor); perda mediana do melhor plano certificado: Z1c 32.56%, Z=2 14.73%
+
+Painel C reavaliado no cenário nominal (perda total, tau_p = 2 h): a mesma conta da linha tau = 2.0 h acima, agora sobre os planos das buscas refeitas com tau_p = 2 h:
+  Δ perda do Z1c contra o Z=2: HL +0.289 [-0.238, +0.702] em 18 instâncias (9 com Z1c pior, 9 com Z1c melhor); perda mediana do melhor plano certificado: Z1c 2.88%, Z=2 2.91%

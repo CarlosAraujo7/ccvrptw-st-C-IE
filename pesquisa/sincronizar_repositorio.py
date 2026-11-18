@@ -47,6 +47,7 @@ ARQUIVOS = [
     # Entrada 153: limite inferior de temperatura (pós-hoc), B3 repetido, figuras S1 e S2 em cores neutras, resumo gráfico
     'pesquisa/analisar_piso_b3.py', 'pesquisa/test_piso_temperatura.py', 'pesquisa/analisar_frota_dedicada.py',
     'pesquisa/gerar_figuras_c.py', 'pesquisa/gerar_resumo_grafico.py',
+    'pesquisa/rodar_b3_tau2.ps1',                 # Entrada 154: o B3 repetido com a constante de tempo do produto de 2 h (painel C da Tabela S30)
     'pesquisa/gerar_tabelas_c.py',                # saída heterogênea de tempos renomeada (Entrada 137)
     # lançadores alterados desde a última sincronização
     'pesquisa/caso_sp/rodar_caso_sp_v2.ps1', 'pesquisa/rodar_ciclo_20261015.ps1', 'pesquisa/rodar_execucao_c_v2.ps1',
