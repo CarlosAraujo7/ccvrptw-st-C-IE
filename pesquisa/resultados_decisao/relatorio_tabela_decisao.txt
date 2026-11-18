@@ -1,0 +1,39 @@
+TABELA 8 (decisão): número e célula de origem
+
+        89  <- S26 benchmark, medium, certificado
+        91  <- S26 benchmark, high, janela larga
+        98  <- S26 São Paulo, high
+       100  <- S26 São Paulo, medium
+        11  <- S26 benchmark, high, janela estreita
+        44  <- S26 n=400, high, janela estreita
+       1.2  <- S27 benchmark, high, CAL, onde falha, média
+       0.7  <- S27 CAL, onde falha, mediana
+       3.0  <- S27 BUF0,95, onde falha, média
+       1.9  <- S27 BUF0,95, onde falha, mediana
+        44  <- S27 benchmark, high, células em que o plano nominal falha
+        40  <- S26 (contagem): células de janela estreita que falham, de b7
+        78  <- Tabela 7 CAL+R, n=400, cumprimento
+        98  <- Tabela 7 ACAL, n=400, cumprimento
+        97  <- Tabela 7 PyVRP BUF0,95+C+R, n=400, cumprimento
+        99  <- S18 ACAL+R, regra LCB, 200-400, cumprimento
+      0.06  <- S18 ACAL+R, 200-400, custo médio da regra LCB
+       3.9  <- S33 Atenas BUF0,95, custo
+      -0.1  <- S33 Atenas CAL, custo
+         2  <- S10 média do dia, medium, mínimo
+        14  <- S10 média do dia, medium, máximo
+         9  <- S10 média do dia, high, mínimo
+        57  <- S10 média do dia, high, máximo
+        92  <- S10 dependente do horário (BUF0,95, CAL, SIM+C), mínimo
+       100  <- S10 dependente do horário (BUF0,95, CAL, SIM+C), máximo
+      0.34  <- S10 maior diferença absoluta de custo entre modelos de planejamento
+        85  <- S20 táxi, re-certificado, mínimo
+       100  <- S20 táxi, re-certificado, máximo
+        77  <- S20 caminhão, re-certificado, mínimo
+        98  <- S20 caminhão, re-certificado, máximo
+         2  <- S20 M3, mínimo
+        62  <- S20 M3, máximo
+        50  <- S31 CV suposto, cumprimento M3
+        93  <- S31 CV estimado, cumprimento M3
+     0.011  <- S19 arrependimento máximo
+      0.13  <- Tabela 4 linhas +R, menor queda da perda de qualidade
+      0.25  <- Tabela 4 linhas +R, maior queda

@@ -1,0 +1,12 @@
+B4 — CV estimado dos dados (κ = 0.27) no planejamento; 6 instâncias MEDIUM com n = 50, sementes 0-4; α = 0.9; K = 1000
+execuções sem plano certificado: braço A 0 de 30, braço B 0 de 30
+  A: planejado e certificado com κ = 0,10 (original): 30 planos; cumpre sob M3  50.0% (P média 0.722); sob M2(0,27)  50.0% (P média 0.700); custo médio 3651.9
+  B: planejado e certificado com κ = 0.27 (estimado dos dados): 30 planos; cumpre sob M3  93.3% (P média 0.955); sob M2(0,27)  53.3% (P média 0.933); custo médio 3719.6
+  custo do B contra o A, por (instância, semente) (30 pares): mediana +0.18% [quartis +0.00; +3.33], média +1.82%; por instância (média das sementes): +0.48, +0.00, +3.21, +0.00, +7.23, +0.02
+  ganho de P sob M3 (B − A), mediana dos pares: +20.5 p.p.
+    C1_050_MEDIUM    P média sob M3: A 0.516  B 0.937
+    C2_050_MEDIUM    P média sob M3: A 0.997  B 0.997
+    R1_050_MEDIUM    P média sob M3: A 0.370  B 0.916
+    R2_050_MEDIUM    P média sob M3: A 0.999  B 0.999
+    RC1_050_MEDIUM   P média sob M3: A 0.472  B 0.892
+    RC2_050_MEDIUM   P média sob M3: A 0.977  B 0.991

@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{Planning with the travel-time variability estimated from observed trips. The coefficient of variation is the mean observed CV by trip-duration band of the legs of the chosen plans (New York taxis, $0.27$), used for the buffers and the certification in the planned-with-data plans, against the assumed $0.10$. Six medium-uncertainty instances with $n=50$, five seeds; chosen plan: cheapest certified rung of $q\in\{0.70,0.80,0.90,0.95\}$ (\mCAL{}); 1{,}000 common scenarios per instance drawn from the observed residuals and day factor, with the observed CV by duration band (M3) or with CV $0.27$ (M2). Complies: \% of plans with $\hat P\ge0.90$; $\bar P$: mean probability. Cost: change of the planned-with-data plan against the assumed-CV plan, median (quartiles) over the pairs. Windows: narrow, families C1, R1 and RC1; wide, families C2, R2 and RC2 (a split added after seeing the totals).}
+\label{tab:b4}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}l l r r r r r@{}}
+\toprule
+Planned with CV & Windows & Plans & Compl. M3 (\%) & $\bar P$ M3 & Compl. M2 (\%) & Cost vs assumed \\
+\midrule
+Assumed, $0.10$ & all & 30 & 50.0 & 0.722 & 50.0 & -- \\
+ & narrow & 15 & 0.0 & 0.453 & 0.0 & -- \\
+ & wide & 15 & 100.0 & 0.991 & 100.0 & -- \\
+\midrule
+Estimated from data, $0.27$ & all & 30 & 93.3 & 0.955 & 53.3 & +0.18\% (+0.00; +3.33) \\
+ & narrow & 15 & 86.7 & 0.915 & 6.7 & +3.33\% (+0.71; +6.16) \\
+ & wide & 15 & 100.0 & 0.996 & 100.0 & +0.00\% (+0.00; +0.00) \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,22 @@
+B4 — CV estimado dos dados (κ = 0.27) no planejamento; 6 instâncias MEDIUM com n = 50, sementes 0-4; α = 0.9; K = 1000
+execuções sem plano certificado: braço A 0 de 30, braço B 0 de 30
+  A: planejado e certificado com κ = 0,10 (original): 30 planos; cumpre sob M3  50.0% (P média 0.722); sob M2(0,27)  50.0% (P média 0.700); custo médio 3651.9
+  B: planejado e certificado com κ = 0.27 (estimado dos dados): 30 planos; cumpre sob M3  93.3% (P média 0.955); sob M2(0,27)  53.3% (P média 0.933); custo médio 3719.6
+  custo do B contra o A, por (instância, semente) (30 pares): mediana +0.18% [quartis +0.00; +3.33], média +1.82%; por instância (média das sementes): +0.48, +0.00, +3.21, +0.00, +7.23, +0.02
+  ganho de P sob M3 (B − A), mediana dos pares: +20.5 p.p.
+    C1_050_MEDIUM    P média sob M3: A 0.516  B 0.937   |  sob M2(0,27): A 0.445  B 0.885
+    C2_050_MEDIUM    P média sob M3: A 0.997  B 0.997   |  sob M2(0,27): A 0.991  B 0.993
+    R1_050_MEDIUM    P média sob M3: A 0.370  B 0.916   |  sob M2(0,27): A 0.338  B 0.870
+    R2_050_MEDIUM    P média sob M3: A 0.999  B 0.999   |  sob M2(0,27): A 0.999  B 0.999
+    RC1_050_MEDIUM   P média sob M3: A 0.472  B 0.892   |  sob M2(0,27): A 0.453  B 0.865
+    RC2_050_MEDIUM   P média sob M3: A 0.977  B 0.991   |  sob M2(0,27): A 0.976  B 0.988
+  braço A, P3: P mínimo 0.350, quartis 0.439 / 0.764 / 0.998; 15 planos abaixo de 0.9 (dos quais 0 entre 0,85 e 0.9)
+  braço A, P2: P mínimo 0.320, quartis 0.415 / 0.738 / 0.996; 15 planos abaixo de 0.9 (dos quais 0 entre 0,85 e 0.9)
+  braço B, P3: P mínimo 0.843, quartis 0.916 / 0.954 / 0.999; 2 planos abaixo de 0.9 (dos quais 1 entre 0,85 e 0.9)
+  braço B, P2: P mínimo 0.835, quartis 0.875 / 0.928 / 0.999; 14 planos abaixo de 0.9 (dos quais 13 entre 0,85 e 0.9)
+  janela todas  braço A: 30 planos; cumpre M3  50.0% (P média 0.722); cumpre M2  50.0% (P média 0.700)
+  janela narrow braço A: 15 planos; cumpre M3   0.0% (P média 0.453); cumpre M2   0.0% (P média 0.412)
+  janela wide   braço A: 15 planos; cumpre M3 100.0% (P média 0.991); cumpre M2 100.0% (P média 0.989)
+  janela todas  braço B: 30 planos; cumpre M3  93.3% (P média 0.955); cumpre M2  53.3% (P média 0.933); custo do B contra o A: mediana +0.18% [+0.00; +3.33], média +1.82%
+  janela narrow braço B: 15 planos; cumpre M3  86.7% (P média 0.915); cumpre M2   6.7% (P média 0.873); custo do B contra o A: mediana +3.33% [+0.71; +6.16], média +3.64%
+  janela wide   braço B: 15 planos; cumpre M3 100.0% (P média 0.996); cumpre M2 100.0% (P média 0.993); custo do B contra o A: mediana +0.00% [+0.00; +0.00], média +0.01%

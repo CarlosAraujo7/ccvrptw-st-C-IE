@@ -1,0 +1,29 @@
+=== sp: 160 execuções em comum, 16 instâncias ===
+  BUF0.95+C  cumpre 100.0%  custo -0.339 (p_Holm 0.000275)  perda -0.382 (p_Holm 0.000275)  CO2 -1.568 (p_Holm 0.000275)
+  CAL        cumpre  93.8%  custo -0.498 (p_Holm 0.000275)  perda -0.375 (p_Holm 0.000275)  CO2 -1.850 (p_Holm 0.000275)
+  CAL+R      cumpre  98.8%  custo -0.508 (p_Holm 0.000275)  perda -0.751 (p_Holm 0.000275)  CO2 -2.988 (p_Holm 0.000275)
+  SIM4       cumpre  91.2%  custo -0.295 (p_Holm 0.000275)  perda -0.035 (p_Holm 0.528)  CO2 -0.755 (p_Holm 0.000427)
+  orçamento igual CAL: custo -0.200 (p_Holm 0.0262)  perda -0.325 (p_Holm 0.000854)  CO2 -1.051 (p_Holm 0.0101)  P_oos +1.070 (p_Holm 0.323)
+  orçamento igual CAL+R: custo -0.201 (p_Holm 0.0524)  perda -0.024 (p_Holm 0.526)  CO2 -0.157 (p_Holm 0.526)  P_oos +0.415 (p_Holm 0.526)
+=== td: 160 execuções em comum, 16 instâncias ===
+  BUF0.95+C  cumpre 100.0%  custo -0.221 (p_Holm 0.00671)  perda -0.377 (p_Holm 0.000275)  CO2 -1.521 (p_Holm 0.000275)
+  CAL        cumpre  95.6%  custo -0.404 (p_Holm 0.000427)  perda -0.339 (p_Holm 0.000275)  CO2 -1.970 (p_Holm 0.000275)
+  CAL+R      cumpre  95.6%  custo -0.409 (p_Holm 0.000427)  perda -0.763 (p_Holm 0.000275)  CO2 -2.993 (p_Holm 0.000275)
+  SIM4       cumpre  96.9%  custo -0.294 (p_Holm 0.000275)  perda +0.084 (p_Holm 0.159)  CO2 -0.527 (p_Holm 0.00214)
+  orçamento igual CAL: custo -0.106 (p_Holm 0.0773)  perda -0.429 (p_Holm 0.000122)  CO2 -1.469 (p_Holm 0.000122)  P_oos -0.715 (p_Holm 0.375)
+  orçamento igual CAL+R: custo -0.108 (p_Holm 0.116)  perda -0.149 (p_Holm 0.116)  CO2 -0.669 (p_Holm 0.00232)  P_oos +0.225 (p_Holm 0.744)
+=== ath: 90 execuções em comum, 9 instâncias ===
+  BUF0.95+C  cumpre 100.0%  custo +3.890 (p_Holm 0.0352)  perda -0.247 (p_Holm 1)  CO2 +2.763 (p_Holm 0.0352)
+  CAL        cumpre 100.0%  custo -0.107 (p_Holm 1)  perda +0.071 (p_Holm 1)  CO2 -0.186 (p_Holm 1)
+  CAL+R      cumpre 100.0%  custo -0.143 (p_Holm 1)  perda +0.084 (p_Holm 1)  CO2 -0.247 (p_Holm 1)
+  SIM4       cumpre 100.0%  custo -1.550 (p_Holm 0.0352)  perda +0.221 (p_Holm 0.492)  CO2 -0.583 (p_Holm 0.586)
+  orçamento igual CAL: custo +1.433 (p_Holm 0.164)  perda -0.099 (p_Holm 0.852)  CO2 +0.411 (p_Holm 0.852)  P_oos +3.795 (p_Holm 0.0156)
+  orçamento igual CAL+R: custo +1.405 (p_Holm 0.223)  perda -0.093 (p_Holm 0.652)  CO2 +0.362 (p_Holm 0.5)  P_oos +3.025 (p_Holm 0.0156)
+=== SIM100 em São Paulo (160 execuções) ===  cumpre SIM100 98.1%  SIM30 93.8%  BUF0.95+C 100.0%  CAL 93.8%  CAL+R 98.8%
+  SIM30      contra SIM100: custo +0.037 (p_Holm 0.823)  perda -0.006 (p_Holm 1)  CO2 +0.096 (p_Holm 1)  P_oos -0.618 (p_Holm 0.134)
+  BUF0.95+C  contra SIM100: custo -0.310 (p_Holm 0.00153)  perda -0.382 (p_Holm 0.000244)  CO2 -1.573 (p_Holm 0.00128)  P_oos +2.400 (p_Holm 0.011)
+  CAL        contra SIM100: custo -0.498 (p_Holm 0.000183)  perda -0.363 (p_Holm 0.000122)  CO2 -1.790 (p_Holm 0.000305)  P_oos -0.135 (p_Holm 0.706)
+  CAL+R      contra SIM100: custo -0.499 (p_Holm 0.000122)  perda -0.756 (p_Holm 0.000122)  CO2 -2.930 (p_Holm 0.000122)  P_oos -2.497 (p_Holm 0.000305)
+=== preço (sp, MEDIUM, 80 execuções) ===  P 0.768 → 0.937; custo +0.33%  perda +0.426 p.p.  CO2 +1.92%; DET+C contra SIM+C: mediana +0.16%, máximo +32.49%
+=== preço (sp, HIGH, 80 execuções) ===  P 0.378 → 0.987; custo +0.39%  perda +0.582 p.p.  CO2 +2.74%; DET+C contra SIM+C: mediana +1.55%, máximo +222.05%
+=== preço (ath, DATA, 90 execuções) ===  P 0.923 → 0.973; custo +0.23%  perda -0.144 p.p.  CO2 +0.45%; DET+C contra SIM+C: mediana -0.02%, máximo +15.37%

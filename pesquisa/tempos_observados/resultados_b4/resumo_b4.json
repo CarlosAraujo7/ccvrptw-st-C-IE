@@ -1,0 +1,582 @@
+{
+ "sem_plano": {
+  "A": 0,
+  "B": 0
+ },
+ "A": {
+  "n": 30,
+  "cumpre_M3": 50.0,
+  "P_M3": 0.7217333333333333,
+  "cumpre_M2": 50.0,
+  "P_M2": 0.7003333333333333,
+  "custo": 3651.9076666666665
+ },
+ "B": {
+  "n": 30,
+  "cumpre_M3": 93.33333333333333,
+  "P_M3": 0.9553333333333335,
+  "cumpre_M2": 53.333333333333336,
+  "P_M2": 0.9333666666666666,
+  "custo": 3719.6252333333337
+ },
+ "custo": {
+  "pares": 30,
+  "mediana": 0.17546708574054382,
+  "q1": 0.0,
+  "q3": 3.325146182621075,
+  "media": 1.8240378596264126,
+  "por_instancia": [
+   0.48251727541652745,
+   4.440892098500626e-15,
+   3.205643548129507,
+   0.0,
+   7.234291018564134,
+   0.021775315648302485
+  ],
+  "dP3_mediana": 20.549999999999997
+ },
+ "por_plano": [
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 0,
+   "custo": 3883.955749999999,
+   "P3": 0.415,
+   "P2": 0.327
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 1,
+   "custo": 3874.8495,
+   "P3": 0.496,
+   "P2": 0.446
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 2,
+   "custo": 3877.082,
+   "P3": 0.438,
+   "P2": 0.366
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 3,
+   "custo": 3888.4045000000006,
+   "P3": 0.603,
+   "P2": 0.515
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 4,
+   "custo": 3894.1657499999997,
+   "P3": 0.627,
+   "P2": 0.572
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 0,
+   "custo": 3480.7397499999993,
+   "P3": 0.996,
+   "P2": 0.987
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 1,
+   "custo": 3480.7397499999993,
+   "P3": 1.0,
+   "P2": 0.996
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 2,
+   "custo": 3480.7397499999993,
+   "P3": 0.993,
+   "P2": 0.985
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 3,
+   "custo": 3480.7397499999993,
+   "P3": 1.0,
+   "P2": 1.0
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 4,
+   "custo": 3480.7397499999993,
+   "P3": 0.996,
+   "P2": 0.987
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 0,
+   "custo": 4022.6652499999996,
+   "P3": 0.35,
+   "P2": 0.32
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 1,
+   "custo": 4022.6652499999996,
+   "P3": 0.404,
+   "P2": 0.367
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 2,
+   "custo": 4022.6652499999996,
+   "P3": 0.35,
+   "P2": 0.32
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 3,
+   "custo": 4046.062999999999,
+   "P3": 0.396,
+   "P2": 0.361
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 4,
+   "custo": 4022.66525,
+   "P3": 0.35,
+   "P2": 0.32
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 0,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 1,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 2,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 3,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 4,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 0,
+   "custo": 3571.6612499999997,
+   "P3": 0.442,
+   "P2": 0.423
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 1,
+   "custo": 3560.7509999999997,
+   "P3": 0.474,
+   "P2": 0.457
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 2,
+   "custo": 3560.7509999999997,
+   "P3": 0.474,
+   "P2": 0.457
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 3,
+   "custo": 3561.28,
+   "P3": 0.434,
+   "P2": 0.412
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 4,
+   "custo": 3560.7509999999997,
+   "P3": 0.535,
+   "P2": 0.515
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 0,
+   "custo": 3433.0067499999996,
+   "P3": 0.995,
+   "P2": 0.996
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 1,
+   "custo": 3428.00175,
+   "P3": 0.902,
+   "P2": 0.903
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 2,
+   "custo": 3434.3597499999996,
+   "P3": 0.998,
+   "P2": 0.995
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 3,
+   "custo": 3433.0067499999996,
+   "P3": 0.996,
+   "P2": 0.997
+  },
+  {
+   "braco": "A",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 4,
+   "custo": 3433.1004999999996,
+   "P3": 0.993,
+   "P2": 0.991
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 0,
+   "custo": 3897.5977499999995,
+   "P3": 0.937,
+   "P2": 0.876
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 1,
+   "custo": 3905.54525,
+   "P3": 0.918,
+   "P2": 0.878
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 2,
+   "custo": 3901.5737500000005,
+   "P3": 0.941,
+   "P2": 0.884
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 3,
+   "custo": 3905.3197499999997,
+   "P3": 0.947,
+   "P2": 0.907
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C1_050_MEDIUM",
+   "semente": 4,
+   "custo": 3902.04925,
+   "P3": 0.942,
+   "P2": 0.882
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 0,
+   "custo": 3480.7397499999993,
+   "P3": 1.0,
+   "P2": 1.0
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 1,
+   "custo": 3480.7397499999993,
+   "P3": 1.0,
+   "P2": 1.0
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 2,
+   "custo": 3480.7397499999993,
+   "P3": 0.992,
+   "P2": 0.985
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 3,
+   "custo": 3480.7397499999997,
+   "P3": 0.996,
+   "P2": 0.99
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_C2_050_MEDIUM",
+   "semente": 4,
+   "custo": 3480.7397499999993,
+   "P3": 0.996,
+   "P2": 0.99
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 0,
+   "custo": 4156.424749999999,
+   "P3": 0.916,
+   "P2": 0.869
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 1,
+   "custo": 4156.424749999999,
+   "P3": 0.916,
+   "P2": 0.869
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 2,
+   "custo": 4156.42475,
+   "P3": 0.917,
+   "P2": 0.874
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 3,
+   "custo": 4156.424749999999,
+   "P3": 0.916,
+   "P2": 0.869
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R1_050_MEDIUM",
+   "semente": 4,
+   "custo": 4156.424749999999,
+   "P3": 0.916,
+   "P2": 0.869
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 0,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 1,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 2,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 3,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_R2_050_MEDIUM",
+   "semente": 4,
+   "custo": 3524.3359999999993,
+   "P3": 0.999,
+   "P2": 0.999
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 0,
+   "custo": 3822.6119999999996,
+   "P3": 0.904,
+   "P2": 0.87
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 1,
+   "custo": 3822.612,
+   "P3": 0.904,
+   "P2": 0.877
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 2,
+   "custo": 3855.3634999999995,
+   "P3": 0.889,
+   "P2": 0.853
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 3,
+   "custo": 3749.638,
+   "P3": 0.843,
+   "P2": 0.835
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC1_050_MEDIUM",
+   "semente": 4,
+   "custo": 3853.7387499999995,
+   "P3": 0.919,
+   "P2": 0.889
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 0,
+   "custo": 3434.9664999999995,
+   "P3": 1.0,
+   "P2": 1.0
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 1,
+   "custo": 3433.0919999999996,
+   "P3": 0.998,
+   "P2": 0.993
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 2,
+   "custo": 3431.03875,
+   "P3": 0.96,
+   "P2": 0.949
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 3,
+   "custo": 3433.0067499999996,
+   "P3": 1.0,
+   "P2": 0.999
+  },
+  {
+   "braco": "B",
+   "instancia": "CCVRPTW-ST_RC2_050_MEDIUM",
+   "semente": 4,
+   "custo": 3433.1004999999996,
+   "P3": 0.998,
+   "P2": 0.999
+  }
+ ],
+ "por_janela": {
+  "A|all": {
+   "n": 30,
+   "c3": 50.0,
+   "P3": 0.7217333333333333,
+   "c2": 50.0,
+   "P2": 0.7003333333333333
+  },
+  "A|narrow": {
+   "n": 15,
+   "c3": 0.0,
+   "P3": 0.45253333333333334,
+   "c2": 0.0,
+   "P2": 0.41186666666666655
+  },
+  "A|wide": {
+   "n": 15,
+   "c3": 100.0,
+   "P3": 0.9909333333333332,
+   "c2": 100.0,
+   "P2": 0.9888
+  },
+  "B|all": {
+   "n": 30,
+   "c3": 93.33333333333333,
+   "P3": 0.9553333333333335,
+   "c2": 53.333333333333336,
+   "P2": 0.9333666666666666,
+   "custo": {
+    "mediana": 0.17546708574054382,
+    "q1": 0.0,
+    "q3": 3.325146182621075,
+    "media": 1.8240378596264126
+   }
+  },
+  "B|narrow": {
+   "n": 15,
+   "c3": 86.66666666666667,
+   "P3": 0.9149999999999999,
+   "c2": 6.666666666666667,
+   "P2": 0.8734,
+   "custo": {
+    "mediana": 3.325146182621075,
+    "q1": 0.7119424531080498,
+    "q3": 6.157608309766161,
+    "media": 3.640817280703389
+   }
+  },
+  "B|wide": {
+   "n": 15,
+   "c3": 100.0,
+   "P3": 0.9956666666666667,
+   "c2": 100.0,
+   "P2": 0.9933333333333335,
+   "custo": {
+    "mediana": 0.0,
+    "q1": 0.0,
+    "q3": 0.0,
+    "media": 0.007258438549435642
+   }
+  }
+ }
+}

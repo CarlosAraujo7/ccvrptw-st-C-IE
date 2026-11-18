@@ -1,0 +1,34 @@
+MARGEM DE EQUIVALÊNCIA DO CUSTO (±0.5%): variação entre sementes. Custo da solução mais barata que cumpre, alfa 0,90, 54 instâncias, 10 sementes.
+
+A. Variação entre execuções do mesmo método e da mesma instância (sementes diferentes), %
+  C-SIMC       CV mediano 0.35  CV p90 1.70 | |d| mediano 0.13  p75 0.65  p90 1.68  fração > 0.5%: 31% de 4860 pares
+  C-BUF95C     CV mediano 0.22  CV p90 0.79 | |d| mediano 0.09  p75 0.52  p90 1.01  fração > 0.5%: 26% de 4860 pares
+  C-BUF90C     CV mediano 0.18  CV p90 0.87 | |d| mediano 0.07  p75 0.48  p90 1.09  fração > 0.5%: 25% de 4860 pares
+  C-CAL-BEST   CV mediano 0.16  CV p90 0.79 | |d| mediano 0.06  p75 0.35  p90 0.88  fração > 0.5%: 18% de 4860 pares
+  C-MOEADC     CV mediano 0.54  CV p90 2.25 | |d| mediano 0.31  p75 1.12  p90 2.65  fração > 0.5%: 42% de 4860 pares
+
+B. Calibração A/A: o método contra ele mesmo, 10 sementes em dois grupos de 5 (todas as divisões), %
+  C-SIMC       |HL| máx 0.046  margem mínima mediana 0.062  máxima 0.147  equivalente em ±0.5%: 126/126  ±0.25%: 126/126  ±0.1%: 113/126
+  C-BUF95C     |HL| máx 0.044  margem mínima mediana 0.051  máxima 0.121  equivalente em ±0.5%: 126/126  ±0.25%: 126/126  ±0.1%: 119/126
+  C-BUF90C     |HL| máx 0.036  margem mínima mediana 0.043  máxima 0.117  equivalente em ±0.5%: 126/126  ±0.25%: 126/126  ±0.1%: 121/126
+  C-CAL-BEST   |HL| máx 0.050  margem mínima mediana 0.041  máxima 0.097  equivalente em ±0.5%: 126/126  ±0.25%: 126/126  ±0.1%: 126/126
+  C-MOEADC     |HL| máx 0.182  margem mínima mediana 0.148  máxima 0.392  equivalente em ±0.5%: 126/126  ±0.25%: 111/126  ±0.1%: 22/126
+
+C. Cada método contra o SIM+C, 10 sementes (como na Tabela S22), %. HL = instância típica; média = média das 54 diferenças com IC de 90% por bootstrap de instâncias (20000 reamostragens, semente 20261117); margem mínima = maior limite absoluto do IC de 90%
+  C-BUF95C     n=54  HL +0.08  IC95 [+0.00, +0.23]  margem 0.21  | média +0.14  IC90 [-0.22, +0.46]  margem 0.46  | equivalente (HL/média) ±0.25%: yes/no  ±0.5%: yes/yes  ±1.0%: yes/yes
+              concentração: 3 instâncias com diferença > 2% (1 com incerteza alta e janelas estreitas); as 5 maiores diferenças em valor absoluto carregam 59% da soma dos valores absolutos
+              execução mais cara em relação à mediana do SIM+C na instância: RC1_050_MEDIUM semente 0, custo 3,736 (1.05 vez a mediana)
+  C-BUF90C     n=54  HL +0.00  IC95 [-0.07, +0.12]  margem 0.11  | média -0.14  IC90 [-0.43, +0.10]  margem 0.43  | equivalente (HL/média) ±0.25%: yes/no  ±0.5%: yes/yes  ±1.0%: yes/yes
+              concentração: 0 instâncias com diferença > 2% (0 com incerteza alta e janelas estreitas); as 5 maiores diferenças em valor absoluto carregam 55% da soma dos valores absolutos
+              execução mais cara em relação à mediana do SIM+C na instância: R1_050_HIGH semente 0, custo 4,530 (1.05 vez a mediana)
+  C-CAL-BEST   n=54  HL -0.22  IC95 [-0.42, -0.10]  margem 0.39  | média -0.24  IC90 [-0.69, +0.28]  margem 0.69  | equivalente (HL/média) ±0.25%: no/no  ±0.5%: yes/no  ±1.0%: yes/yes
+              concentração: 1 instâncias com diferença > 2% (1 com incerteza alta e janelas estreitas); as 5 maiores diferenças em valor absoluto carregam 64% da soma dos valores absolutos
+              execução mais cara em relação à mediana do SIM+C na instância: R1_050_HIGH semente 3, custo 10,080 (2.34 vez a mediana)
+  C-MOEADC     n=54  HL +0.50  IC95 [+0.31, +0.75]  margem 0.71  | média +0.51  IC90 [+0.25, +0.74]  margem 0.74  | equivalente (HL/média) ±0.25%: no/no  ±0.5%: no/no  ±1.0%: yes/yes
+              concentração: 2 instâncias com diferença > 2% (1 com incerteza alta e janelas estreitas); as 5 maiores diferenças em valor absoluto carregam 36% da soma dos valores absolutos
+              execução mais cara em relação à mediana do SIM+C na instância: R1_050_HIGH semente 8, custo 4,965 (1.16 vez a mediana)
+  C-BUF70C     n=54  HL +0.09  IC95 [-0.00, +0.43]  margem 0.38  | média +6.36  IC90 [+2.59, +10.55]  margem 10.55  | equivalente (HL/média) ±0.25%: no/no  ±0.5%: yes/no  ±1.0%: yes/no  (21 execuções sem solução que cumpre ficam fora da média da instância)
+              concentração: 8 instâncias com diferença > 2% (7 com incerteza alta e janelas estreitas); as 5 maiores diferenças em valor absoluto carregam 82% da soma dos valores absolutos
+              execução mais cara em relação à mediana do SIM+C na instância: R1_050_HIGH semente 2, custo 18,208 (4.24 vez a mediana)
+
+Âncora em reais (valores do modelo; custos da Tabela S12: 150 BRL por rota, 2.5 BRL/km): custo do plano do SIM+C (solução mais barata que cumpre, média das sementes por instância): mediana 3,487, quartis 2,245 e 5,872, mínimo 1,591, máximo 8,364; por tamanho (n = 25, 50, 100): 2,020, 3,487, 6,254. 0,5% da mediana = 17.4 BRL (quartis: 11.2 a 29.4); corresponde a 7.0 km e a 12% do custo fixo de uma rota

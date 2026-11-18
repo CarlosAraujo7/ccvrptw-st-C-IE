@@ -1,0 +1,36 @@
+\begin{table}[htbp]
+\centering
+\caption{Calibration of the $\pm0.5\%$ equivalence margin against the variation of the cost between seeds (cost of the cheapest compliant solution, $\alpha=0.90$, 54 instances, 10 seeds; all values in \% except counts). A: coefficient of variation (CV) of the cost over the ten seeds of each instance (median and 90th percentile over instances) and absolute relative difference $|d|$ between two runs with different seeds (median, 75th and 90th percentiles); the last column is the share of pairs with $|d|>0.5\%$. B: each method against itself, with the seeds divided in two groups of five in all 126 ways and the per-instance means compared as in Table~\ref{tab:equiv}; the margin is the smallest for which the two one-sided tests declare equivalence (the larger absolute limit of the 90\% Hodges--Lehmann interval), and the last three columns count the splits declared equivalent within each margin. Five against five seeds is noisier than the ten against ten of the main analysis. C: each method against \mSIM{} with all seeds; HL is the Hodges--Lehmann estimate of the typical instance, Mean is the mean of the 54 relative differences, and the last three columns give the verdict for each margin. The 0.70 buffer shows the limit of the estimator: its typical difference is small, but a few instances dominate its mean.}
+\label{tab:margem}
+\small
+\begin{tabular}{@{}l r r r r r r@{}}
+\toprule
+\multicolumn{7}{@{}l}{\textit{A. Variation between runs of the same method on the same instance (different seeds)}} \\
+Method & CV med. & CV p90 & $|d|$ med. & $|d|$ p75 & $|d|$ p90 & $|d|>0.5\%$ \\
+\midrule
+\mSIM{} & 0.35 & 1.70 & 0.13 & 0.65 & 1.68 & 31 \\
+\mBUF{0.95} & 0.22 & 0.79 & 0.09 & 0.52 & 1.01 & 26 \\
+\mBUF{0.90} & 0.18 & 0.87 & 0.07 & 0.48 & 1.09 & 25 \\
+\mCAL{} & 0.16 & 0.79 & 0.06 & 0.35 & 0.88 & 18 \\
+\mMOEAD{} & 0.54 & 2.25 & 0.31 & 1.12 & 2.65 & 42 \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{B. Each method against itself, seeds split 5 + 5 in the 126 possible ways (splits declared equivalent)}} \\
+Method & $|\mathrm{HL}|$ max & Margin med. & Margin max & $\pm0.5\%$ & $\pm0.25\%$ & $\pm0.1\%$ \\
+\midrule
+\mSIM{} & 0.05 & 0.06 & 0.15 & 126 & 126 & 113 \\
+\mBUF{0.95} & 0.04 & 0.05 & 0.12 & 126 & 126 & 119 \\
+\mBUF{0.90} & 0.04 & 0.04 & 0.12 & 126 & 126 & 121 \\
+\mCAL{} & 0.05 & 0.04 & 0.10 & 126 & 126 & 126 \\
+\mMOEAD{} & 0.18 & 0.15 & 0.39 & 126 & 111 & 22 \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{C. Each method against \mSIM{}, ten seeds, as in Table~\ref{tab:equiv}}} \\
+Method & HL & Mean & Margin & $\pm0.25\%$ & $\pm0.5\%$ & $\pm1\%$ \\
+\midrule
+\mBUF{0.95} & +0.08 & +0.14 & 0.21 & yes & yes & yes \\
+\mBUF{0.90} & +0.00 & -0.14 & 0.11 & yes & yes & yes \\
+\mCAL{} & -0.22 & -0.24 & 0.39 & no & yes & yes \\
+\mMOEAD{} & +0.50 & +0.51 & 0.71 & no & no & yes \\
+\mBUF{0.70} & +0.09 & +6.36 & 0.38 & no & yes & yes \\
+\bottomrule
+\end{tabular}
+\end{table}

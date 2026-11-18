@@ -1,0 +1,24 @@
+EQUIVALÊNCIA DE CUSTO (±0.5%) POR OUTROS ESTIMADORES. Custo da solução mais barata que cumpre, alfa 0,90, contra o SIM+C; 20000 reamostragens bootstrap de instâncias, semente 20261117.
+"marg" = maior limite absoluto do IC de 90% (equivalente a ±m% se marg < m). Diferenças em %.
+
+método        n |     HL  marg |  média             IC90  marg | mediana  marg | aparada  marg | t:marg | p Wilcoxon p perm.média | d>+0,5 d<-0,5  máx d
+BUF0.95+C    54 |  +0.08  0.21 |  +0.14 [ -0.22, +0.46]  0.46 |   +0.00  0.11 |   +0.15  0.32 |   0.49 |       0.05        0.565 |     10      6   +3.9
+BUF0.90+C    54 |  +0.00  0.11 |  -0.14 [ -0.43, +0.10]  0.43 |   +0.00  0.01 |   +0.01  0.12 |   0.41 |       0.81        0.501 |      8      8   +1.6
+CAL          54 |  -0.22  0.39 |  -0.24 [ -0.69, +0.28]  0.69 |   -0.17  0.21 |   -0.27  0.39 |   0.75 |    0.00021        0.507 |      2     16  +13.0
+MOEA/D+C     54 |  +0.50  0.71 |  +0.51 [ +0.25, +0.74]  0.74 |   +0.38  0.70 |   +0.52  0.70 |   0.76 |    1.7e-06      0.00069 |     24      2   +3.2
+BUF0.70+C    54 |  +0.09  0.38 |  +6.36 [ +2.59,+10.55] 10.55 |   +0.00  0.03 |   +1.28  5.03 |  10.50 |      0.034      0.00161 |     15      2  +76.3
+
+Sem a instância de maior diferença (um a um):
+  BUF0.95+C   sem CCVRPTW-ST_RC1_025_MEDIUM (d = +3.9%): média +0.07, IC90 da média [-0.28, +0.36] (marg 0.36); HL +0.07 (marg 0.19)
+  BUF0.90+C   sem CCVRPTW-ST_RC1_050_MEDIUM (d = +1.6%): média -0.17, IC90 da média [-0.46, +0.07] (marg 0.46); HL +0.00 (marg 0.08)
+  CAL         sem CCVRPTW-ST_R1_050_HIGH (d = +13.0%): média -0.49, IC90 da média [-0.81, -0.23] (marg 0.81); HL -0.26 (marg 0.41)
+  MOEA/D+C    sem CCVRPTW-ST_R1_025_HIGH (d = +3.2%): média +0.45, IC90 da média [+0.21, +0.67] (marg 0.67); HL +0.47 (marg 0.65)
+  BUF0.70+C   sem CCVRPTW-ST_R1_050_HIGH (d = +76.3%): média +5.04, IC90 da média [+1.85, +8.80] (marg 8.80); HL +0.09 (marg 0.33)
+
+Execuções (instância, semente) com custo maior que 1,5 vez a mediana do SIM+C na instância:
+  SIM+C         0 de 540 execuções com custo
+  BUF0.95+C     0 de 540 execuções com custo
+  BUF0.90+C     0 de 540 execuções com custo
+  CAL           1 de 540 execuções com custo; as maiores: R1_050_HIGH s3: 10,080 (2.34x)
+  MOEA/D+C      0 de 540 execuções com custo
+  BUF0.70+C    15 de 519 execuções com custo; as maiores: R1_050_HIGH s2: 18,208 (4.24x); RC1_025_HIGH s9: 7,811 (3.49x); C1_100_HIGH s8: 20,136 (3.23x)
