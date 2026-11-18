@@ -502,6 +502,8 @@ def _worker(task: dict) -> dict:
             'c_params':          c_params or None,
             # Entrada 153: fração do valor perdida por congelamento indevido (0 = sem limite inferior, como em todas as execuções anteriores)
             'piso_fracao':       float(os.environ.get('CCVRP_PISO_FRACAO', '0') or 0.0),
+            # Entrada 154: constante de tempo do produto do limite inferior (h); só vale com piso_fracao > 0; ausente nas execuções anteriores (10 h)
+            'piso_tau_h':        __import__('thermal_route').piso_tau_h(),
             # Entrada 83: cinética do compartimento único (B2 sempre usa a de cada produto)
             'cinetica_por_cliente': (True if use_multizone else
                                      (c_params.get('cinetica_por_cliente')

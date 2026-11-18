@@ -61,7 +61,10 @@ DOOR_CV = {'LOW': 0.10, 'MEDIUM': 0.30, 'HIGH': 0.60}   # Novaes et al. (2015): 
 # refrigerado carregado numa zona a -18 °C esfria até ela, em vez de embarcar já congelado (hipótese mais favorável ao Z1c).
 # DESLIGADO por padrão (variável de ambiente ausente ou 0): nenhum resultado já gravado muda.
 PISO_C = {'meat': -1.5, 'dairy': -0.5, 'produce': -0.5}   # °C
-TAU_P_PISO_H = 10.0                                       # h
+TAU_P_PISO_H = 10.0                                       # h (padrão do estudo)
+# Entrada 154 (PÓS-HOC): a constante de tempo do produto passa a poder ser trocada pela variável de ambiente CCVRP_PISO_TAU_H (h,
+# positiva), para repetir as buscas com um produto que responde mais depressa; ausente ou inválida, vale TAU_P_PISO_H = 10 h e
+# nenhum resultado já gravado muda.
 
 
 def piso_fracao() -> float:
@@ -72,8 +75,18 @@ def piso_fracao() -> float:
         return 0.0
 
 
+def piso_tau_h() -> float:
+    """Constante de tempo do produto (h) no limite inferior: CCVRP_PISO_TAU_H, se definida e positiva; senão TAU_P_PISO_H (10 h)."""
+    try:
+        v = float(os.environ.get('CCVRP_PISO_TAU_H', '') or 0.0)
+    except ValueError:
+        v = 0.0
+    return v if v > 0.0 else TAU_P_PISO_H
+
+
 def _tp_min_zona(idx_z, route, cust, per_cat, zinf, Ta_min, T_pull, pull, tl, wait, st, T_st, T_air_srv, K, m):
     """Mínimo da temperatura do produto até a entrega, K×m (NaN onde o congelamento é impossível ou não se aplica)."""
+    tau = piso_tau_h()
     ar_min = min(zinf['T_min_C'], zinf['T_set_C'], Ta_min)          # nenhum ar da zona fica abaixo disso
     por_ini = {}
     for i in idx_z:
@@ -90,14 +103,14 @@ def _tp_min_zona(idx_z, route, cust, per_cat, zinf, Ta_min, T_pull, pull, tl, wa
         alvo = set(ids)
         Tp = np.full(K, float(ti)); run = Tp.copy()
         for j in range(m):
-            Tp = T_pull[:, j] + (Tp - T_pull[:, j]) * np.exp(-pull[:, j] / TAU_P_PISO_H)
+            Tp = T_pull[:, j] + (Tp - T_pull[:, j]) * np.exp(-pull[:, j] / tau)
             run = np.minimum(run, Tp)
             dur = tl[:, j] - pull[:, j] + wait[:, j]
-            Tp = T_st[:, j] + (Tp - T_st[:, j]) * np.exp(-dur / TAU_P_PISO_H)
+            Tp = T_st[:, j] + (Tp - T_st[:, j]) * np.exp(-dur / tau)
             run = np.minimum(run, Tp)
             if j in alvo:
                 res[:, j] = run
-            Tp = T_air_srv[:, j] + (Tp - T_air_srv[:, j]) * np.exp(-st[j] / TAU_P_PISO_H)
+            Tp = T_air_srv[:, j] + (Tp - T_air_srv[:, j]) * np.exp(-st[j] / tau)
             run = np.minimum(run, Tp)
     return res
 
