@@ -197,6 +197,11 @@ submitted package (`--pacote` gives the folder with its `tables/`; `--tudo` incl
   evaluation-only sensitivity to the lost fraction and to the product time constant (`pesquisa/resultados_c_b3_lb/`);
   `pesquisa/z1c_descritivo_frio.py` describes how the single cold compartment is used; `pesquisa/test_piso_temperatura.py`
   tests the rule (switched off, it returns exactly what the previous module returned).
+- Faster product (panel C of Table S30). The temperature model of the product has a time constant of 10 h by default; the
+  environment variable `CCVRP_PISO_TAU_H` replaces it. The searches of Z1c and of two zones were repeated with 2 h
+  (`pesquisa/rodar_b3_tau2.ps1`, or `CCVRP_PISO_FRACAO=1 CCVRP_PISO_TAU_H=2 python pesquisa/frota_dedicada.py --rodar --variantes Z1c Z2 --tamanhos 50 --workers 2 --res results_c_b3_lb_tau2`).
+  The analysis plan, with its hypothesis and the rule for reading the outcome, was written before the runs
+  (header of `pesquisa/analisar_piso_b3.py`; dated copy in `pesquisa/resultados_c_b3_lb/plano_painel_c_antes_da_analise.txt`).
 - `pesquisa/tempos_observados/b4_cv_estimado.py`: coefficient of variation estimated from the taxi trips and used in planning (Table S31).
 - `pesquisa/margem_equivalencia.py` and `pesquisa/verificar_equivalencia_media.py`: the ±0.5% equivalence margin (Table S32).
 - `pesquisa/tabela_casos_sp_atenas.py`: paired comparisons and equal-budget comparisons for São Paulo and Athens (Tables S33 and S34).
