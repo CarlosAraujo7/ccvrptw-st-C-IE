@@ -1,9 +1,10 @@
 B3 — frota dedicada por categoria contra o multicompartimento; C-BUF90C, n = 50, 18 instâncias, sementes 0-4; α = 0.90
-execuções por variante: MIX 90, Z=2 90, Z=3 90, D2 90, D4 90
+execuções por variante: MIX 90, Z=2 90, Z=3 90, D2 90, D4 90, Z1c 90
   Z=2  pares  90  cumpre MIX 100.0% / Z=2 100.0%  Δ perda  -2.67 p.p. [-3.09, -2.20]  Δ custo  +0.13% [+0.00, +0.40]  Δ CO2  +1.82%  legal 0.0% (MIX 15.8%)
   Z=3  pares  90  cumpre MIX 100.0% / Z=3 100.0%  Δ perda  -2.41 p.p. [-2.89, -2.06]  Δ custo  +0.53% [+0.22, +0.88]  Δ CO2  +2.64%  legal 0.0% (MIX 15.8%)
   D2   pares  90  cumpre MIX 100.0% / D2 100.0%  Δ perda  -1.25 p.p. [-1.44, -1.06]  Δ custo +15.12% [+11.93, +17.79]  Δ CO2 +18.03%  legal 0.0% (MIX 15.8%)
   D4   pares  90  cumpre MIX 100.0% / D4 100.0%  Δ perda  -1.04 p.p. [-1.17, -0.90]  Δ custo +49.23% [+43.05, +62.18]  Δ CO2 +56.58%  legal 0.0% (MIX 15.8%)
+  Z1c  pares  90  cumpre MIX 100.0% / Z1c 100.0%  Δ perda  -3.00 p.p. [-3.25, -2.51]  Δ custo  +0.00% [-0.32, +0.00]  Δ CO2  +0.91%  legal 0.0% (MIX 15.8%)
 
 Comparação direta contra Z = 2 (por instância; HL [IC 95%]; Wilcoxon; Holm nas 3 medidas):
   D2 contra Z=2:
@@ -18,3 +19,7 @@ Comparação direta contra Z = 2 (por instância; HL [IC 95%]; Wilcoxon; Holm na
       Δ perda (p.p.)  n=18  HL  +0.172 [ +0.140,  +0.208]  p=7.63e-06  p_Holm=2.29e-05  (0 menores, 18 maiores)
       Δ custo (%)     n=18  HL  +0.373 [ +0.222,  +0.461]  p=0.000839  p_Holm=0.000839  (1 menores, 17 maiores)
       Δ CO2 (%)       n=18  HL  +0.749 [ +0.558,  +0.978]  p=7.63e-06  p_Holm=2.29e-05  (0 menores, 18 maiores)
+  Z1c contra Z=2:
+      Δ perda (p.p.)  n=18  HL  -0.295 [ -0.381,  -0.205]  p=7.63e-06  p_Holm=2.29e-05  (18 menores, 0 maiores)
+      Δ custo (%)     n=18  HL  -0.323 [ -0.548,  -0.208]  p=7.63e-06  p_Holm=2.29e-05  (18 menores, 0 maiores)
+      Δ CO2 (%)       n=18  HL  -1.009 [ -1.173,  -0.829]  p=7.63e-06  p_Holm=2.29e-05  (18 menores, 0 maiores)

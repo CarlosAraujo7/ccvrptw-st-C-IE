@@ -1,0 +1,25 @@
+\begin{table}[htbp]
+\centering
+\caption{Dedicated vehicles per product class versus multi-compartment vehicles, \mBUF{0.90}, $n=50$, 18 instances $\times$ 5 seeds. Reference: a single compartment carrying the same mixed load at the dominant set-point (Z=1, as in Table~S15). Z=1, coldest set-point: the same mixed routes, with the single compartment run at the coldest set-point of any category on board. Dedicated fleets: each route carries one class of product and runs one zone at the set-point of the coldest category present (D2: frozen / chilled; D4: one class per category). Panel A: the model of the first version, which does not penalize over-cooling. Panel B: the same searches repeated with a lower temperature limit, added after the result of panel A: a refrigerated product whose temperature falls below its freezing point ($-1.5$\,\textdegree C for meat, $-0.5$\,\textdegree C for dairy and produce) before delivery loses its value; the dedicated fleets and the single compartment at the dominant set-point never reach those limits, so their rows are the same in both panels. Differences are medians over the pairs in which both variants have a plan certified out of sample, for the best value of each objective among compliant solutions (in panel B the loss includes the value lost by freezing; interquartile range of the cost difference in brackets). Compliance: \% of runs with a certified plan. Legal: mean share of delivered value above the legal limit of its own category. Frozen: mean share of the delivered value of refrigerated products that falls below its freezing point before delivery (nominal scenario).}
+\label{tab:b3}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}l r r r r r r r@{}}
+\toprule
+Variant & Pairs & Compl. (\%) & $\Delta$ loss (p.p.) & $\Delta f_1$ (\%) & $\Delta f_3$ (\%) & Legal (\%) & Frozen (\%) \\
+\midrule
+\multicolumn{8}{@{}l}{\textit{A. Over-cooling not penalized}} \\
+$Z=1$, coldest set-point & 90 & 100 & -3.00 & +0.00 [-0.3, +0.0] & +0.91 & 0.0 & 26.0 \\
+$Z=2$ zones & 90 & 100 & -2.67 & +0.13 [+0.0, +0.4] & +1.82 & 0.0 & 33.5 \\
+$Z=3$ zones & 90 & 100 & -2.41 & +0.53 [+0.2, +0.9] & +2.64 & 0.0 & 31.6 \\
+D2: frozen / chilled & 90 & 100 & -1.25 & +15.12 [+11.9, +17.8] & +18.03 & 0.0 & 0.0 \\
+D4: one per category & 90 & 100 & -1.04 & +49.23 [+43.0, +62.2] & +56.58 & 0.0 & 0.0 \\
+\midrule
+\multicolumn{8}{@{}l}{\textit{B. Lower temperature limit (freezing point), searches repeated}} \\
+$Z=1$, coldest set-point & 90 & 100 & -1.53 & +0.00 [-0.1, +0.1] & +0.93 & 0.0 & 6.2 \\
+$Z=2$ zones & 90 & 100 & -1.28 & +0.15 [+0.0, +0.4] & +1.82 & 0.0 & 6.1 \\
+$Z=3$ zones & 90 & 100 & -1.21 & +0.64 [+0.4, +1.0] & +2.87 & 0.0 & 4.5 \\
+\midrule
+$Z=1$, mixed load & -- & 100 & -- & -- & -- & 15.8 & 0.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

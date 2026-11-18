@@ -1,39 +1,44 @@
 TESTE DE REGENERAÇÃO DAS TABELAS — pacote: C:\Users\vinic\OneDrive\Documentos\Revisão Cold Chain\tables
-17/11/2026 05:22
+18/11/2026 13:23
 
-PASSA      tab_acal                   47 números idênticos; 5 s
-PASSA      tab_b2                     58 números idênticos; 6 s
+PASSA      tab_acal                   47 números idênticos; 31 s
+PASSA      tab_b2                     58 números idênticos; 95 s
+PASSA      tab_b4                     38 números idênticos; 2 s
 PASSA      tab_caso_atenas            21 números idênticos; 1 s
-PASSA      tab_caso_sp                42 números idênticos; 1 s
-PASSA      tab_caso_sp_pico           38 números idênticos; 1 s
-PASSA      tab_caso_sp_td             42 números idênticos; 1 s
-PASSA      tab_clima                  42 números idênticos; 6 s
-PASSA      tab_comparar_td            67 números idênticos; 2 s
-PASSA      tab_conformidade           146 números idênticos; 6 s
-PASSA      tab_custo                  89 números idênticos; 6 s
-PASSA      tab_degrau_nominal         40 números idênticos; 20 s
-PASSA      tab_equivalencia           53 números idênticos; 2 s
-PASSA      tab_escala                 85 números idênticos; 5 s
-PASSA      tab_exato                  34 números idênticos; 6 s
-PASSA      tab_frota_dedicada         41 números idênticos; 61 s
-PASSA      tab_hv                     32 números idênticos; 6 s
+PASSA      tab_caso_sp                42 números idênticos; 0 s
+PASSA      tab_caso_sp_pico           38 números idênticos; 7 s
+PASSA      tab_caso_sp_td             42 números idênticos; 2 s
+PASSA      tab_casos_orcamento        98 números idênticos; 18 s
+PASSA      tab_casos_pareadas         140 números idênticos; 18 s
+PASSA      tab_clima                  42 números idênticos; 95 s
+PASSA      tab_comparar_td            67 números idênticos; 1 s
+PASSA      tab_conformidade           146 números idênticos; 95 s
+PASSA      tab_custo                  89 números idênticos; 95 s
+PASSA      tab_decisao                64 números idênticos; 0 s
+PASSA      tab_degrau_nominal         40 números idênticos; 15 s
+PASSA      tab_equivalencia           53 números idênticos; 1 s
+PASSA      tab_escala                 85 números idênticos; 25 s
+PASSA      tab_exato                  34 números idênticos; 95 s
+PASSA      tab_frota_dedicada         88 números idênticos; 143 s
+PASSA      tab_hv                     32 números idênticos; 95 s
+PASSA      tab_margem                 116 números idênticos; 1 s
 PASSA      tab_observado              122 números idênticos; 0 s
-PASSA      tab_parteb                 98 números idênticos; 6 s
+PASSA      tab_parteb                 98 números idênticos; 95 s
 PASSA      tab_parteb_estendida       56 números idênticos; 0 s
-PASSA      tab_preco                  56 números idênticos; 6 s
-PASSA      tab_preco_completo         63 números idênticos; 3 s
-PASSA      tab_pyvrp_nominal_cert     38 números idênticos; 5 s
-PASSA      tab_pyvrp_nominal_decomp   22 números idênticos; 5 s
-PASSA      tab_pyvrp_nominal_preco    68 números idênticos; 5 s
-PASSA      tab_pyvrp_pipeline         35 números idênticos; 2 s
-PASSA      tab_pyvrp_sim              42 números idênticos; 3 s
-PASSA      tab_refino                 46 números idênticos; 2 s
-PASSA      tab_regra_lcb              72 números idênticos; 6 s
+PASSA      tab_preco                  56 números idênticos; 95 s
+PASSA      tab_preco_completo         63 números idênticos; 52 s
+PASSA      tab_pyvrp_nominal_cert     38 números idênticos; 62 s
+PASSA      tab_pyvrp_nominal_decomp   22 números idênticos; 62 s
+PASSA      tab_pyvrp_nominal_preco    68 números idênticos; 62 s
+PASSA      tab_pyvrp_pipeline         35 números idênticos; 1 s
+PASSA      tab_pyvrp_sim              42 números idênticos; 1 s
+PASSA      tab_refino                 46 números idênticos; 1 s
+PASSA      tab_regra_lcb              72 números idênticos; 3 s
 PASSA      tab_robustez               58 números idênticos; 0 s
-PASSA      tab_servico_alt            72 números idênticos; 11 s
-PASSA      tab_simc100_completo       52 números idênticos; 5 s
-PASSA      tab_tempo                  21 números idênticos; 6 s
-PASSA      tab_teoria                 110 números idênticos; 25 s
+PASSA      tab_servico_alt            72 números idênticos; 30 s
+PASSA      tab_simc100_completo       52 números idênticos; 9 s
+PASSA      tab_tempo                  21 números idênticos; 5 s
+PASSA      tab_teoria                 110 números idênticos; 31 s
 
-Resumo: PASSA 33, FALHA 0, ERRO 0, SEM PACOTE 0, PULADA 0
+Resumo: PASSA 38, FALHA 0, ERRO 0, SEM PACOTE 0, PULADA 0
 Tabelas sem gerador testado: tab_params; tab_sp_dados

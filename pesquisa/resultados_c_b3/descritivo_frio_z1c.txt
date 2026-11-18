@@ -1,0 +1,4 @@
+Z1c (C-BUF90C, n = 50): 90 arquivos, 90 execuções com solução viável
+média sobre as execuções da média sobre as soluções viáveis de cada frente final
+rotas com algum cliente de congelados (zona a -18 °C): média 82.2% (mín 60.8%, máx 97.9%)
+massa não congelada transportada nessas rotas: média 81.0% (mín 55.6%, máx 98.5%)

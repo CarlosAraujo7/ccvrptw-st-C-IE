@@ -31,9 +31,19 @@ REGISTRO = [
     (['tab_pyvrp_nominal_cert', 'tab_pyvrp_nominal_preco', 'tab_pyvrp_nominal_decomp'], ['pesquisa/analisar_pyvrp_nominal.py'], {},
      {t: 'pesquisa/resultados_pyvrp_nominal' for t in ('tab_pyvrp_nominal_cert', 'tab_pyvrp_nominal_preco', 'tab_pyvrp_nominal_decomp')}, True, 600),
     (['tab_simc100_completo'], ['pesquisa/analisar_simc100_completo.py', '--sem-oos'], {}, {'tab_simc100_completo': 'pesquisa/resultados_robustez'}, True, 600),
-    (['tab_frota_dedicada'], ['pesquisa/analisar_frota_dedicada.py', '--workers', '2'], {}, {'tab_frota_dedicada': 'pesquisa/resultados_c_b3'}, False, 1800),
+    # B3 com os dois painéis (sem e com limite inferior de temperatura; Entrada 153): analisar_piso_b3.py reaproveita analisar_frota_dedicada.py
+    (['tab_frota_dedicada'], ['pesquisa/analisar_piso_b3.py', '--tex', '{tmp}/tab_frota_dedicada.tex', '--out', '{tmp}', '--workers', '2'], {},
+     {'tab_frota_dedicada': '{tmp}'}, False, 3600),
+    (['tab_b4'], ['pesquisa/tempos_observados/b4_cv_estimado.py', '--analisar'], {}, {'tab_b4': 'pesquisa/tempos_observados/resultados_b4'}, True, 900),
     # geradores antigos (escrevem em latex_ejor_c/tables)
     (['tab_equivalencia'], ['pesquisa/equivalencia.py'], {}, {'tab_equivalencia': LTX}, True, 600),
+    # S32 (17/11/2026, Entrada 147): calibração da margem de ±0,5% pela variação entre sementes
+    (['tab_margem'], ['pesquisa/margem_equivalencia.py', '--tex', '{tmp}/tab_margem.tex'], {}, {'tab_margem': '{tmp}'}, True, 600),
+    (['tab_casos_pareadas', 'tab_casos_orcamento'], ['pesquisa/tabela_casos_sp_atenas.py', '--tex', '{tmp}/tab_casos_pareadas.tex', '--tex2',
+                                                      '{tmp}/tab_casos_orcamento.tex', '--out', '{tmp}'], {},
+     {'tab_casos_pareadas': '{tmp}', 'tab_casos_orcamento': '{tmp}'}, True, 600),
+    # Tabela 8 (17/11/2026, Entrada 151): tabela derivada; lê as outras tabelas do pacote (a pasta vem de CCVRPTW_PACOTE_TABLES, passada abaixo)
+    (['tab_decisao'], ['pesquisa/tabela_decisao.py', '--tex', '{tmp}/tab_decisao.tex', '--out', '{tmp}'], {}, {'tab_decisao': '{tmp}'}, True, 120),
     (['tab_refino'], ['pesquisa/analisar_refinamento.py', '--dir', 'pesquisa/resultados_refinamento', '--tabela', '{tmp}/tab_refino.tex'], {}, {'tab_refino': '{tmp}'}, True, 600),
     (['tab_robustez'], ['pesquisa/gerar_tab_robustez.py'], {}, {'tab_robustez': LTX}, True, 600),
     (['tab_acal'], ['pesquisa/resumo_acal.py'], {}, {'tab_acal': LTX}, True, 900),
@@ -98,7 +108,7 @@ def main():
             t0 = time.time()
             try:
                 r = subprocess.run([sys.executable, '-X', 'utf8', '-I'] + args, cwd=BASE, capture_output=True, text=True, encoding='utf-8',
-                                   errors='replace', timeout=limite, env={**os.environ, **env})
+                                   errors='replace', timeout=limite, env={**os.environ, 'CCVRPTW_PACOTE_TABLES': a.pacote, **env})
                 ok_exec, msg_exec = r.returncode == 0, (r.stderr or '').strip().split('\n')[-1][:160]
             except subprocess.TimeoutExpired:
                 ok_exec, msg_exec = False, f'tempo máximo de {limite} s excedido'

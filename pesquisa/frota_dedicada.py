@@ -15,6 +15,12 @@ Pureza SEM alterar src/: dentro do processo de cada execução, o módulo ccvrp_
   (c) _eliminar_rota só reinsere em rotas da mesma classe.
 Conferência (aborta se falhar): todas as rotas de todas as soluções das frentes finais são puras.
 
+Repetição com limite inferior de temperatura (17/11/2026, Entrada 153): com a variável de ambiente CCVRP_PISO_FRACAO = 1
+(src/thermal_route.py), um produto refrigerado que cai abaixo do ponto de congelamento perde o valor. As variantes Z2 e Z3
+(zonas do B2, motor original, sem remendo) entram junto com D2, D4 e Z1c, e a saída vai para outra pasta (--res), sem tocar nos
+resultados de 16 e 17/11. Exemplo (PowerShell):  $env:CCVRP_PISO_FRACAO='1'; python pesquisa/frota_dedicada.py --rodar
+      --variantes Z1c Z2 Z3 --tamanhos 50 --workers 2 --res results_c_b3_lb
+
 Uso:  python pesquisa/frota_dedicada.py --piloto
       python pesquisa/frota_dedicada.py --rodar --variantes D4 D2 --tamanhos 50 --workers 3
       python pesquisa/frota_dedicada.py --conferir          (pureza das frentes já gravadas)
@@ -28,7 +34,10 @@ sys.path.insert(0, os.path.join(BASE, 'src')); sys.path.insert(0, os.path.join(B
 RES = os.path.join(BASE, 'results_c_b3')
 ALGO = 'C-BUF90C'
 CLASSE = {'D4': {'frozen': 'frozen', 'meat': 'meat', 'dairy': 'dairy', 'produce': 'produce'},
-          'D2': {'frozen': 'frozen', 'meat': 'chilled', 'dairy': 'chilled', 'produce': 'chilled'}}
+          'D2': {'frozen': 'frozen', 'meat': 'chilled', 'dairy': 'chilled', 'produce': 'chilled'},
+          'Z1c': {'frozen': 'all', 'meat': 'all', 'dairy': 'all', 'produce': 'all'},   # Z1c: sem separação; zona única no ponto mais frio (Entrada 138)
+          'Z2': None, 'Z3': None}   # zonas do B2 (Entrada 153): motor original, sem remendo
+ZONAS = {'D4': 1, 'D2': 1, 'Z1c': 1, 'Z2': 2, 'Z3': 3}
 SEMENTES = (0, 1, 2, 3, 4)
 _ORIG = {}
 
@@ -40,6 +49,10 @@ def aplicar(variante):
     if not _ORIG:
         _ORIG.update(split=cc.split_decode, elim=cc._eliminar_rota, init=cc.Contexto.__init__)
     mapa = CLASSE[variante]
+    if mapa is None:        # Z2, Z3: motor original (um worker pode ter rodado outra variante antes)
+        cc.Contexto.__init__ = _ORIG['init']; cc.split_decode = _ORIG['split']; cc._eliminar_rota = _ORIG['elim']
+        cc._frota_dedicada = None
+        return
 
     def init(self, inst, *a, **k):
         _ORIG['init'](self, inst, *a, **k)
@@ -101,7 +114,7 @@ def tarefas(variantes, tamanhos, niveis):
                     continue
                 T.append({'inst_path': f, 'algo': ALGO, 'algo_label': f'{ALGO}-{v}', 'seed': s, 'pop_size': 100, 'n_gen': 200,
                           'mc_samples': cfg['mc_samples'], 'runner': cfg['runner'], 'out_dir': out_dir, 'result_key': key,
-                          'use_multizone': True, 'n_zones': 1, 'dedup': cfg.get('dedup', False), 'c_params': cfg.get('c_params'),
+                          'use_multizone': True, 'n_zones': ZONAS[v], 'dedup': cfg.get('dedup', False), 'c_params': cfg.get('c_params'),
                           'variante': v})
     return T
 
@@ -117,6 +130,8 @@ def conferir(variantes, silencioso=False):
     ok = True; n_sol = n_rotas = 0
     for v in variantes:
         mapa = CLASSE[v]
+        if mapa is None:        # Z2, Z3: sem restrição de pureza
+            continue
         for f in sorted(glob.glob(os.path.join(RES, f'{ALGO}-{v}', '*_solutions.json'))):
             m = json.load(open(f.replace('_solutions.json', '_metrics.json'), encoding='utf-8'))
             inst = ns.load_instance(os.path.join(BASE, 'instances', 'generated', m['instance'] + '.json'))
@@ -133,17 +148,17 @@ def conferir(variantes, silencioso=False):
     return ok
 
 
-def piloto():
-    """Uma instância (n = 50, MEDIUM), semente 0, D4 e D2; confere a pureza e mede o tempo."""
+def piloto(variantes=('D4', 'D2'), res='results_c_b3_piloto'):
+    """Uma instância (n = 50, MEDIUM), semente 0, nas variantes pedidas (padrão D4 e D2); confere a pureza e mede o tempo."""
     global RES
-    RES = os.path.join(BASE, 'results_c_b3_piloto')
-    T = [t for t in tarefas(['D4', 'D2'], [50], ['MEDIUM']) if t['seed'] == 0 and '_C1_' in t['inst_path']]
+    RES = os.path.join(BASE, res)
+    T = [t for t in tarefas(list(variantes), [50], ['MEDIUM']) if t['seed'] == 0 and '_C1_' in t['inst_path']]
     print(f'{len(T)} tarefas de piloto', flush=True)
     t0 = time.time()
     with Pool(2) as pool:
         for r in pool.imap_unordered(_tarefa, T):
             print(f"  {r.get('key', '')} {r.get('status', '')} {r.get('elapsed', '')} [{(time.time() - t0) / 60:.1f} min]", flush=True)
-    conferir(['D4', 'D2'])
+    conferir(list(variantes))
 
 
 def avaliar_oos(variantes, workers):
@@ -176,13 +191,16 @@ if __name__ == '__main__':
     ap.add_argument('--piloto', action='store_true')
     ap.add_argument('--rodar', action='store_true')
     ap.add_argument('--conferir', action='store_true')
-    ap.add_argument('--variantes', nargs='+', default=['D4', 'D2'], choices=['D4', 'D2'])
+    ap.add_argument('--variantes', nargs='+', default=['D4', 'D2'], choices=['D4', 'D2', 'Z1c', 'Z2', 'Z3'])
     ap.add_argument('--tamanhos', nargs='+', type=int, default=[50])
     ap.add_argument('--niveis', nargs='+', default=None)
     ap.add_argument('--workers', type=int, default=3)
+    ap.add_argument('--res', default=None, help='pasta de saída relativa à raiz do projeto (padrão: results_c_b3)')
     a = ap.parse_args()
+    if a.res:
+        RES = os.path.join(BASE, a.res)
     if a.piloto:
-        piloto()
+        piloto(a.variantes, a.res or 'results_c_b3_piloto') if a.variantes != ['D4', 'D2'] or a.res else piloto()
     if a.rodar:
         rodar(a.variantes, a.tamanhos, a.niveis, a.workers)
     if a.conferir:

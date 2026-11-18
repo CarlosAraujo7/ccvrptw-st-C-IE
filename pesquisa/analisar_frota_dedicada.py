@@ -4,7 +4,8 @@ Análise do B3 (16/11/2026, diário Entrada 130): frota dedicada por categoria c
 Plano fixado antes de rodar (Entrada 130); este script só executa o plano.
 
 Algoritmo C-BUF90C; n = 50; 18 instâncias (seis famílias x LOW/MEDIUM/HIGH); sementes 0-4.
-Variantes: MIX (Z = 1, compartimento único, carga mista, set-point dominante), Z = 2, Z = 3 (results_c_b2), D2 e D4 (results_c_b3).
+Variantes: MIX (Z = 1, compartimento único, carga mista, set-point dominante), Z = 2, Z = 3 (results_c_b2), D2 e D4 (results_c_b3) e,
+acrescentada em 17/11 (Entrada 138), Z1c (compartimento único no set-point mais frio a bordo, rotas mistas; results_c_b3).
 Por (instância, semente) em que a variante e a base MIX têm solução certificada fora da amostra (P >= α): diferença da melhor perda de
 qualidade (p.p.), do melhor custo (%) e do melhor CO2 (%) contra a base MIX; mediana sobre os pares (igual à Tabela S15).
 Também: % de execuções com solução que cumpre; % do valor entregue acima do limite legal da própria categoria (conformidade_legal_b2).
@@ -27,7 +28,7 @@ ALPHA = 0.90
 OUT = os.path.join(BASE, 'pesquisa', 'resultados_c_b3')
 VAR = [('MIX', os.path.join('results_c_b2', 'C-BUF90C-MIX')), ('Z=2', os.path.join('results_c_b2', 'C-BUF90C_Z2')),
        ('Z=3', os.path.join('results_c_b2', 'C-BUF90C_Z3')), ('D2', os.path.join('results_c_b3', 'C-BUF90C-D2')),
-       ('D4', os.path.join('results_c_b3', 'C-BUF90C-D4'))]
+       ('D4', os.path.join('results_c_b3', 'C-BUF90C-D4')), ('Z1c', os.path.join('results_c_b3', 'C-BUF90C-Z1c'))]
 SEM = (0, 1, 2, 3, 4)
 
 
@@ -93,7 +94,9 @@ def main(sem_legal, workers):
                    f'Δ custo {np.median(dc):+6.2f}% [{np.percentile(dc, 25):+.2f}, {np.percentile(dc, 75):+.2f}]  Δ CO2 {np.median(de):+6.2f}%  '
                    f'legal {LEG.get(n, (float("nan"), 0))[0]:.1f}% (MIX {LEG.get("MIX", (float("nan"), 0))[0]:.1f}%)')
     out.append('\nComparação direta contra Z = 2 (por instância; HL [IC 95%]; Wilcoxon; Holm nas 3 medidas):')
-    for n in ('D2', 'D4', 'Z=3'):
+    for n in ('D2', 'D4', 'Z=3', 'Z1c'):
+        if n not in D or not D[n]:
+            continue
         res = []
         for nm, campo, rel in (('Δ perda (p.p.)', 'q', False), ('Δ custo (%)', 'c', True), ('Δ CO2 (%)', 'e', True)):
             dd, ks = difs(D['Z=2'], D[n], campo, rel)
@@ -119,16 +122,18 @@ def main(sem_legal, workers):
 def tabela(resumo):
     if not resumo['linhas']:
         return
-    NOME = {'Z=2': r'$Z=2$ zones', 'Z=3': r'$Z=3$ zones', 'D2': r'D2: frozen / chilled', 'D4': r'D4: one per category'}
+    NOME = {'Z1c': r'$Z=1$, coldest set-point', 'Z=2': r'$Z=2$ zones', 'Z=3': r'$Z=3$ zones', 'D2': r'D2: frozen / chilled',
+            'D4': r'D4: one per category'}
     L = [r'\begin{table}[htbp]', r'\centering',
          r'\caption{Dedicated vehicles per product class versus multi-compartment vehicles, \mBUF{0.90}, $n=50$, 18 instances $\times$ 5 seeds. '
-         r'Reference: a single compartment carrying the same mixed load at the dominant set-point (Z=1, as in Table~S15). Dedicated fleets: each route carries one class '
+         r'Reference: a single compartment carrying the same mixed load at the dominant set-point (Z=1, as in Table~S15). Z=1, coldest set-point: the same mixed routes, '
+         r'with the single compartment run at the coldest set-point of any category on board. Dedicated fleets: each route carries one class '
          r'of product and runs one zone at the set-point of the coldest category present (D2: frozen / chilled; D4: one class per category). Differences are medians over '
          r'the pairs in which both variants have a plan certified out of sample, for the best value of each objective among compliant solutions (interquartile range of the '
          r'cost difference in brackets). Compliance: \% of runs with a certified plan. Legal: mean share of delivered value above the legal limit of its own category.}',
          r'\label{tab:b3}', r'\footnotesize\setlength{\tabcolsep}{3pt}', r'\begin{tabular}{@{}l r r r r r r@{}}', r'\toprule',
          r'Variant & Pairs & Compl. (\%) & $\Delta$ loss (p.p.) & $\Delta f_1$ (\%) & $\Delta f_3$ (\%) & Legal (\%) \\', r'\midrule']
-    for n in ('Z=2', 'Z=3', 'D2', 'D4'):
+    for n in ('Z1c', 'Z=2', 'Z=3', 'D2', 'D4'):
         r = resumo['linhas'].get(n)
         if r is None:
             continue

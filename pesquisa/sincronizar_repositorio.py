@@ -39,6 +39,14 @@ ARQUIVOS = [
     'pesquisa/pyvrp_nominal.py', 'pesquisa/analisar_pyvrp_nominal.py', 'pesquisa/frota_dedicada.py',
     'pesquisa/analisar_frota_dedicada.py', 'pesquisa/analisar_simc100_completo.py', 'pesquisa/orquestrar_bloco_b.sh',
     'pesquisa/testar_regeneracao_tabelas.py',     # teste de regeneração das tabelas (A7, Entrada 137)
+    'pesquisa/tempos_observados/b4_cv_estimado.py', 'pesquisa/z1c_descritivo_frio.py',   # B4 e Z1c (17/11/2026, Entradas 139-142)
+    'pesquisa/margem_equivalencia.py',            # justificativa da margem de ±0,5% (17/11/2026, Entrada 147; colunas pela média, Entrada 149)
+    'pesquisa/verificar_equivalencia_media.py',   # o veredito de equivalência por outros estimadores (Entradas 148-149)
+    'pesquisa/tabela_casos_sp_atenas.py',         # Tabelas S33 e S34: comparações pareadas de São Paulo e de Atenas (Entrada 149)
+    'pesquisa/tabela_decisao.py',                 # Tabela 8: quando os buffers bastam; derivada de outras tabelas, número a número (Entrada 151)
+    # Entrada 153: limite inferior de temperatura (pós-hoc), B3 repetido, figuras S1 e S2 em cores neutras, resumo gráfico
+    'pesquisa/analisar_piso_b3.py', 'pesquisa/test_piso_temperatura.py', 'pesquisa/analisar_frota_dedicada.py',
+    'pesquisa/gerar_figuras_c.py', 'pesquisa/gerar_resumo_grafico.py',
     'pesquisa/gerar_tabelas_c.py',                # saída heterogênea de tempos renomeada (Entrada 137)
     # lançadores alterados desde a última sincronização
     'pesquisa/caso_sp/rodar_caso_sp_v2.ps1', 'pesquisa/rodar_ciclo_20261015.ps1', 'pesquisa/rodar_execucao_c_v2.ps1',
@@ -53,7 +61,9 @@ PASTAS = ['instances/caso_sp_td', 'instances/caso_sp_media_operacao', 'instances
           # ciclo C1 (resumos pequenos; os resultados brutos por execução vão para um arquivo permanente, não para o git)
           'pesquisa/resultados_custo_completo', 'pesquisa/resultados_servico_alternativo', 'pesquisa/resultados_parte_b_estendida',
           'pesquisa/resultados_parte_b_estendida_poshoc', 'pesquisa/resultados_pyvrp_nominal', 'pesquisa/resultados_c_b3',
-          'pesquisa/resultados_robustez', 'pesquisa/resultados_teste_regeneracao']   # o LaTeX gerado fica fora do repositório (.gitignore)
+          'pesquisa/resultados_robustez', 'pesquisa/resultados_teste_regeneracao',
+          'pesquisa/resultados_casos_sp_atenas', 'pesquisa/resultados_decisao', 'pesquisa/resultados_c_b3_lb',
+          'instances/b4_cv_observado', 'pesquisa/tempos_observados/resultados_b4']   # o LaTeX gerado fica fora do repositório (.gitignore)
 IGNORAR = ('.bak', '__pycache__', 'log_', '_backup_')
 
 

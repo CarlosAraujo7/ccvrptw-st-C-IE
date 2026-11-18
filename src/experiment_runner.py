@@ -500,6 +500,8 @@ def _worker(task: dict) -> dict:
             'hv_ref_point':      list(hv_ref_point) if hv_ref_point is not None else None,
             'dedup':             dedup,
             'c_params':          c_params or None,
+            # Entrada 153: fração do valor perdida por congelamento indevido (0 = sem limite inferior, como em todas as execuções anteriores)
+            'piso_fracao':       float(os.environ.get('CCVRP_PISO_FRACAO', '0') or 0.0),
             # Entrada 83: cinética do compartimento único (B2 sempre usa a de cada produto)
             'cinetica_por_cliente': (True if use_multizone else
                                      (c_params.get('cinetica_por_cliente')

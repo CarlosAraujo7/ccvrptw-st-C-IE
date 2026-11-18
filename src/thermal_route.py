@@ -52,6 +52,56 @@ PHI_HEAT_PER_S      = 0.0027   # Tso et al. (2002), via Stellingwerf et al. (202
 COOL_S_PER_KG       = 0.4      # Stellingwerf et al. (2021), caso-base
 DOOR_CV = {'LOW': 0.10, 'MEDIUM': 0.30, 'HIGH': 0.60}   # Novaes et al. (2015): CV 0,05-0,60
 
+# Limite inferior de temperatura do produto (17/11/2026, diário Entrada 153). PÓS-HOC: nasceu depois do resultado do Z1c
+# (compartimento único no set-point mais frio), que vencia as duas zonas porque o modelo não penalizava o excesso de frio.
+# Um produto refrigerado cuja temperatura cai abaixo do seu ponto de congelamento antes da entrega perde a fração CCVRP_PISO_FRACAO
+# do seu valor (1 = perde tudo). Os pontos de congelamento são valores iniciais típicos, arredondados (hipótese do estudo; os
+# congelados não têm limite inferior). A temperatura do produto segue o modelo concentrado de 1ª ordem com τp = 10 h (o mesmo dos
+# limites legais, pesquisa/conformidade_legal_b2.py) e parte do set-point da PRÓPRIA categoria, não do da zona: um produto
+# refrigerado carregado numa zona a -18 °C esfria até ela, em vez de embarcar já congelado (hipótese mais favorável ao Z1c).
+# DESLIGADO por padrão (variável de ambiente ausente ou 0): nenhum resultado já gravado muda.
+PISO_C = {'meat': -1.5, 'dairy': -0.5, 'produce': -0.5}   # °C
+TAU_P_PISO_H = 10.0                                       # h
+
+
+def piso_fracao() -> float:
+    """Fração do valor perdida por congelamento indevido (0 = recurso desligado)."""
+    try:
+        return max(0.0, min(1.0, float(os.environ.get('CCVRP_PISO_FRACAO', '0') or 0.0)))
+    except ValueError:
+        return 0.0
+
+
+def _tp_min_zona(idx_z, route, cust, per_cat, zinf, Ta_min, T_pull, pull, tl, wait, st, T_st, T_air_srv, K, m):
+    """Mínimo da temperatura do produto até a entrega, K×m (NaN onde o congelamento é impossível ou não se aplica)."""
+    ar_min = min(zinf['T_min_C'], zinf['T_set_C'], Ta_min)          # nenhum ar da zona fica abaixo disso
+    por_ini = {}
+    for i in idx_z:
+        cat = cust[route[i] - 1]['product_category']
+        lim = PISO_C.get(cat)
+        if lim is None:
+            continue
+        ti = per_cat[cat]['T_set_C']
+        if min(ti, ar_min) >= lim:                                   # sem como chegar ao ponto de congelamento
+            continue
+        por_ini.setdefault(ti, []).append(i)
+    res = np.full((K, m), np.nan)
+    for ti, ids in por_ini.items():
+        alvo = set(ids)
+        Tp = np.full(K, float(ti)); run = Tp.copy()
+        for j in range(m):
+            Tp = T_pull[:, j] + (Tp - T_pull[:, j]) * np.exp(-pull[:, j] / TAU_P_PISO_H)
+            run = np.minimum(run, Tp)
+            dur = tl[:, j] - pull[:, j] + wait[:, j]
+            Tp = T_st[:, j] + (Tp - T_st[:, j]) * np.exp(-dur / TAU_P_PISO_H)
+            run = np.minimum(run, Tp)
+            if j in alvo:
+                res[:, j] = run
+            Tp = T_air_srv[:, j] + (Tp - T_air_srv[:, j]) * np.exp(-st[j] / TAU_P_PISO_H)
+            run = np.minimum(run, Tp)
+    return res
+
+
 CLIMA_DIR = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                           '..', 'pesquisa', 'clima'))
 CLIMA_PADRAO = '83780099999'   # São Paulo (Congonhas) — provisório, ver Entrada 70
@@ -189,6 +239,10 @@ def route_quality(route: List[int], inst: dict, ttime, scen: dict,
 
     Q = np.zeros((K, m))
     Tp_max = np.full((K, m), np.nan)   # máx. da temperatura do produto até a entrega (se tau_p_h)
+    phi = piso_fracao()
+    if phi > 0 and not inst['thermal_profile'].get('per_category'):
+        phi = 0.0                      # sem categorias não há limite inferior por categoria
+    Tp_min = np.full((K, m), np.nan)   # mín. da temperatura do produto até a entrega (só com o limite inferior ligado)
     for z, zinf in zt.items():
         idx_z = np.where(zc == z)[0]
         if len(idx_z) == 0:
@@ -234,7 +288,18 @@ def route_quality(route: List[int], inst: dict, ttime, scen: dict,
                     Tp_max[:, j] = run
                 Tp = T_air_srv[:, j] + (Tp - T_air_srv[:, j]) * np.exp(-st[j] / tau_p_h)
                 run = np.maximum(run, Tp)
+        if phi > 0:
+            T_air_srv_p = np.where(aberta[None, :], T_ar, T_st)
+            res = _tp_min_zona(idx_z, route, cust, inst['thermal_profile']['per_category'], zinf, float(Ta.min()),
+                               T_pull, pull, tl, wait, st, T_st, T_air_srv_p, K, m)
+            ok = ~np.isnan(res)
+            Tp_min[ok] = res[ok]
+    cong = None
+    if phi > 0:
+        lim = np.array([PISO_C.get(cust[c - 1]['product_category'], -np.inf) for c in route])
+        cong = Tp_min < lim[None, :]                                                 # NaN < x é falso
+        Q = Q * (1.0 - phi * cong)
     if detalhe:
-        return {'Q': Q, 'Tp_max': Tp_max, 'values': values, 'late': late,
+        return {'Q': Q, 'Tp_max': Tp_max, 'Tp_min': Tp_min, 'cong': cong, 'values': values, 'late': late,
                 'cat': [cust[c - 1]['product_category'] for c in route]}
     return (Q * values[None, :]).sum(axis=1) / tot
